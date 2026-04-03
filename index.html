@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kementerian Transmigrasi RI - Program Patriot</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  
+  <style>
+    :root {
+      --background: #ffffff;
+      --foreground: #0d3244;
+      --border: #00000014;
+      --primary: #0d3244;
+      --primary-foreground: #ffffff;
+      --muted: #f3f5f7;
+      --muted-foreground: #61717c;
+      --accent: #c08e41;
+      --radius-md: 6px;
+      --radius-lg: 8px;
+      --font-family-body: 'Inter', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-family-body);
+      background-color: var(--background);
+      color: var(--foreground);
+      line-height: 1.5;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header & Nav */
+    .header {
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+      height: 80px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .logo { display: flex; align-items: center; gap: 16px; text-decoration: none; color: inherit; }
+    .logo-img { width: 50px; height: 50px; object-fit: contain; border-radius: 50%; }
+    .logo-title { font-size: 18px; font-weight: 700; display: block; text-transform: uppercase; }
+    .logo-subtitle { font-size: 12px; opacity: 0.8; display: block; }
+
+    .nav { display: flex; gap: 24px; }
+    .nav-link { 
+      color: var(--primary-foreground); 
+      text-decoration: none; 
+      font-size: 14px; 
+      font-weight: 500; 
+      opacity: 0.8;
+      transition: 0.3s;
+    }
+    .nav-link:hover, .nav-link.active { opacity: 1; border-bottom: 2px solid var(--accent); }
+
+    /* Ticker */
+    .ticker { background-color: var(--accent); color: var(--primary); padding: 12px 0; font-weight: 600; }
+    .ticker-content { display: flex; align-items: center; gap: 12px; }
+    .ticker-badge { background: var(--primary); color: #fff; padding: 4px 8px; font-size: 11px; border-radius: 4px; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(rgba(11, 37, 69, 0.7), rgba(11, 37, 69, 0.7)), 
+                  url('https://storage.googleapis.com/banani-generated-images/generated-images/43e21db7-3df4-4b86-9eaa-528d276c87ee.jpg');
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+    }
+    .hero-title { font-size: 48px; font-weight: 800; margin-bottom: 16px; }
+    .hero-desc { font-size: 18px; max-width: 700px; margin: 0 auto; opacity: 0.9; }
+
+    /* Scholarship Box */
+    .scholarship-container { margin-top: -60px; position: relative; z-index: 10; }
+    .scholarship-box {
+      background: var(--accent);
+      padding: 40px;
+      border-radius: var(--radius-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      gap: 30px;
+    }
+    .scholarship-btn {
+      background: var(--primary);
+      color: #fff;
+      padding: 16px 32px;
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* Sections */
+    .section { padding: 80px 0; }
+    .bg-muted { background: var(--muted); }
+    .section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .section-title { font-size: 32px; margin-bottom: 20px; }
+    .feature-list { list-style: none; margin-top: 24px; }
+    .feature-list li { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-weight: 600; }
+
+    .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+    .card { background: #fff; padding: 32px; border-radius: var(--radius-lg); border: 1px solid var(--border); }
+    .card-icon { width: 48px; height: 48px; background: var(--primary); border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 24px; }
+
+    /* Footer */
+    .footer { background: var(--primary); color: #fff; padding: 60px 0 20px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; }
+    .footer-title { color: var(--accent); margin-bottom: 20px; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: #fff; text-decoration: none; opacity: 0.7; }
+    .footer-bottom { text-align: center; padding-top: 20px; font-size: 14px; opacity: 0.6; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .section-grid, .card-grid, .footer-grid, .scholarship-box { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
+      .nav { display: none; } /* Sederhananya disembunyikan untuk mobile */
+      .hero-title { font-size: 32px; }
+      .scholarship-box { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-content">
+      <a href="#" class="logo">
+        <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2F9dfe8fc4-533c-43e4-ad2d-5b735792cafb?alt=media&token=eea5f1ac-f4f6-4f33-927e-18950b2eec09" alt="Logo" class="logo-img">
+        <div>
+          <span class="logo-title">Kementerian Transmigrasi RI</span>
+          <span class="logo-subtitle">Republik Indonesia</span>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="profil.html" class="nav-link">Profil</a>
+        <a href="regulasi.html" class="nav-link">Regulasi</a>
+        <a href="programdetail.html" class="nav-link">Program</a>
+        <a href="kontakkami.html" class="nav-link">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="ticker">
+    <div class="container ticker-content">
+      <span class="ticker-badge">INFO TERKINI</span>
+      <p>Pendaftaran Tim Ekspedisi Patriot 2026 telah dibuka. Mari bergabung bersama kami!</p>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <h1 class="hero-title">Program Transmigrasi Patriot</h1>
+      <p class="hero-desc">Membangun desa, memajukan kawasan pesisir, dan mewujudkan kesejahteraan bangsa melalui kolaborasi semangat kebangsaan.</p>
+    </div>
+  </section>
+
+  <div class="container scholarship-container">
+    <div class="scholarship-box">
+      <div>
+        <h2 style="margin-bottom: 8px;">Pendaftaran Beasiswa Transmigrasi Patriot 2026 Telah Dibuka!</h2>
+        <p>Dicari 1.500 Mahasiswa Unggul untuk penempatan di 154 Kawasan Prioritas. Dapatkan bantuan biaya riset dan uang saku.</p>
+      </div>
+      <a href="formregistrasi.html" class="scholarship-btn">Daftar Beasiswa Sekarang</a>
+    </div>
+  </div>
+
+  <main>
+    <section class="section" id="profil">
+      <div class="container section-grid">
+        <div>
+          <h2 class="section-title">Profil Program</h2>
+          <p>Program Transmigrasi Patriot bertujuan untuk mempercepat pembangunan daerah, khususnya di kawasan perbatasan dan maritim. Melalui pendekatan inovatif dan kolaboratif, kami mengirimkan putra-putri terbaik bangsa untuk menjadi katalisator perubahan di desa-desa transmigrasi.</p>
+          <ul class="feature-list">
+            <li><iconify-icon icon="lucide:check-circle-2" style="color:var(--primary)"></iconify-icon> Pemberdayaan Ekonomi Lokal & Kewirausahaan</li>
+            <li><iconify-icon icon="lucide:check-circle-2" style="color:var(--primary)"></iconify-icon> Pengembangan Infrastruktur Dasar</li>
+            <li><iconify-icon icon="lucide:check-circle-2" style="color:var(--primary)"></iconify-icon> Peningkatan Kualitas Pendidikan dan Kesehatan</li>
+          </ul>
+        </div>
+        <img src="https://storage.googleapis.com/banani-generated-images/generated-images/15521b10-ab63-40a5-aaed-08a638c052f9.jpg" alt="Kegiatan" style="width:100%; border-radius: var(--radius-lg);">
+      </div>
+    </section>
+
+    <section class="section bg-muted" id="program">
+      <div class="container">
+        <div style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
+          <h2 class="section-title">Inisiatif & Fokus Utama</h2>
+          <p>Beragam program dirancang secara strategis untuk memberikan dampak nyata dan terukur bagi keberlanjutan kawasan transmigrasi.</p>
+        </div>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-icon"><iconify-icon icon="lucide:tractor"></iconify-icon></div>
+            <h3>Ketahanan Pangan</h3>
+            <p>Pengenalan teknologi pertanian modern untuk meningkatkan hasil panen dan pendapatan para transmigran.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><iconify-icon icon="lucide:anchor"></iconify-icon></div>
+            <h3>Kawasan Maritim</h3>
+            <p>Pemberdayaan kelompok nelayan tangguh dan pengembangan potensi wisata pesisir di area transmigrasi.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><iconify-icon icon="lucide:graduation-cap"></iconify-icon></div>
+            <h3>Pendidikan Karakter</h3>
+            <p>Pengiriman tenaga pendidik sukarela ke wilayah terpencil untuk memastikan pendidikan dasar yang berkualitas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="kontak">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#" class="logo" style="margin-bottom: 10px; display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+            <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2F9dfe8fc4-533c-43e4-ad2d-5b735792cafb?alt=media&token=eea5f1ac-f4f6-4f33-927e-18950b2eec09" alt="Logo" class="logo-img" style="width: 45px; height: 45px; border-radius: 50%;">
+            <div>
+              <span class="logo-title" style="font-size: 18px; font-weight: 700; display: block; text-transform: uppercase;">Kementerian Transmigrasi RI</span>
+              <span class="logo-subtitle" style="font-size: 12px; opacity: 0.8; display: block;">Republik Indonesia</span>
+            </div>
+          </a>
+          <p style="opacity: 0.8; font-size: 14px;">Berkomitmen penuh untuk memajukan kesejahteraan masyarakat melalui pembangunan kawasan transmigrasi yang berkelanjutan, inklusif, dan mandiri.</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Tautan Cepat</h4>
+          <ul class="footer-links">
+            <li><a href="#profil">Profil Program</a></li>
+            <li><a href="#program">Fokus Utama</a></li>
+            <li><a href="#regulasi">Dokumen Regulasi</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Pusat Kontak</h4>
+          <p style="font-size: 14px; opacity: 0.8;">
+            Jl. TMP. Kalibata No.17, Jakarta Selatan 12750<br>
+            (021) 7999999<br>
+            info@transmigrasi.go.id
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Kementerian Transmigrasi Republik Indonesia. Hak Cipta Dilindungi Undang-Undang.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+</body>
+</html>

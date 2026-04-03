@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil & Program - Transmigrasi Patriot</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+
+    <style>
+        :root {
+            --background: #ffffff;
+            --foreground: #0d3244;
+            --border: #00000014;
+            --primary: #0d3244;
+            --primary-foreground: #ffffff;
+            --muted: #f3f5f7;
+            --muted-foreground: #61717c;
+            --warning: #c29642;
+            --warning-foreground: #ffffff;
+            --accent: #c29642;
+            --radius-md: 6px;
+            --radius-lg: 8px;
+            --font-family-body: 'Inter', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-family-body);
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            height: 80px;
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo { display: flex; align-items: center; gap: 16px; text-decoration: none; color: inherit; }
+        .logo img { width: 50px; height: 50px; border-radius: 50%; object-fit: contain; }
+        .logo-title { font-size: 18px; font-weight: 700; display: block; text-transform: uppercase; line-height: 1.2; }
+        .logo-subtitle { font-size: 12px; opacity: 0.8; display: block; text-transform: uppercase; }
+
+        .nav { display: flex; gap: 24px; }
+        .nav-link { 
+            color: var(--primary-foreground); 
+            text-decoration: none; 
+            font-size: 14px; 
+            font-weight: 500; 
+            opacity: 0.8;
+            padding: 8px 0;
+            transition: 0.3s;
+        }
+        .nav-link:hover, .nav-link.active { opacity: 1; border-bottom: 3px solid var(--warning); }
+
+        /* Sections */
+        .section { padding: 80px 0; }
+        .bg-muted { background-color: var(--muted); }
+        
+        .section-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 60px; 
+            align-items: center; 
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--warning);
+            color: var(--warning-foreground);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .section-title { font-size: 36px; font-weight: 800; margin-bottom: 20px; color: var(--primary); }
+        .section-desc { font-size: 17px; color: var(--muted-foreground); margin-bottom: 30px; }
+
+        /* List Profile */
+        .profil-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+        .profil-list li { display: flex; gap: 15px; }
+        .list-icon { 
+            width: 44px; height: 44px; background: rgba(194, 150, 66, 0.1); 
+            color: var(--warning); border-radius: 8px; 
+            display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;
+        }
+        .profil-list strong { display: block; font-size: 16px; margin-bottom: 4px; }
+        .profil-list p { font-size: 14px; color: var(--muted-foreground); }
+
+        /* Features Grid */
+        .feature-header-center { text-align: center; max-width: 700px; margin: 0 auto 50px; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+        .feature-card { 
+            background: #fff; padding: 30px; border-radius: var(--radius-lg); 
+            border: 1px solid var(--border); text-align: center; transition: 0.3s;
+        }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .feature-icon-wrapper { 
+            width: 60px; height: 60px; background: rgba(194, 150, 66, 0.1); 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            margin: 0 auto 20px; font-size: 28px; color: var(--warning);
+        }
+
+        /* Footer */
+        .footer { background-color: var(--primary); color: #fff; padding: 60px 0 0; margin-top: 40px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; padding-bottom: 40px; }
+        .footer-title { color: var(--warning); margin-bottom: 20px; font-size: 18px; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #fff; text-decoration: none; opacity: 0.7; font-size: 14px; }
+        .footer-contact { display: flex; flex-direction: column; gap: 15px; }
+        .contact-item { display: flex; align-items: center; gap: 10px; font-size: 14px; opacity: 0.8; }
+        .footer-bottom { text-align: center; padding: 25px 0; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; opacity: 0.6; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section-grid { grid-template-columns: 1fr; text-align: center; }
+            .profil-list li { flex-direction: column; align-items: center; text-align: center; }
+            .nav { display: none; } /* Mobile Menu Toggle needed for real prod */
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer-info, .footer-contact { align-items: center; }
+            .contact-item { justify-content: center; }
+            .section-title { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2Fe4555ffb-ad55-4a94-acb9-eab45e534938?alt=media&token=3a10a3ef-6f3a-40f0-a6bb-d8ac3e6fa465" alt="Logo">
+                <div class="logo-text">
+                    <span class="logo-title">Kementerian Transmigrasi RI</span>
+                    <span class="logo-subtitle">Republik Indonesia</span>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="profil.html" class="nav-link active">Profil</a>
+                <a href="regulasi.html" class="nav-link">Regulasi</a>
+                <a href="programdetail.html" class="nav-link">Program</a>
+                <a href="kontakkami.html" class="nav-link">Kontak</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section bg-muted" id="profil">
+            <div class="container">
+                <div class="section-grid">
+                    <div>
+                        <div class="badge">Profil Program</div>
+                        <h1 class="section-title">Transmigrasi Patriot</h1>
+                        <p class="section-desc">
+                            Transmigrasi Patriot adalah program unggulan untuk menciptakan SDM unggul (Knowledge Spillover) guna mengatasi ketimpangan di kawasan transmigrasi sesuai Renstra 2025-2029.
+                        </p>
+                        <ul class="profil-list">
+                            <li>
+                                <div class="list-icon"><iconify-icon icon="lucide:brain-circuit"></iconify-icon></div>
+                                <div>
+                                    <strong>Knowledge Spillover</strong>
+                                    <p>Menciptakan ekosistem transfer pengetahuan untuk peningkatan kapasitas SDM lokal di kawasan penempatan.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="list-icon"><iconify-icon icon="lucide:scale"></iconify-icon></div>
+                                <div>
+                                    <strong>Mengatasi Ketimpangan</strong>
+                                    <p>Pemerataan ekonomi dan pembangunan infrastruktur terpadu yang menyeluruh bagi masyarakat luas.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="https://storage.googleapis.com/banani-generated-images/generated-images/6e50fd36-4a94-496a-a437-d841f4012966.jpg" 
+                             alt="Pembangunan Desa" 
+                             style="width: 100%; border-radius: var(--radius-lg); box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="program">
+            <div class="container">
+                <div class="feature-header-center">
+                    <h2 class="section-title">Fokus & Sasaran Program</h2>
+                    <p class="section-desc">Transmigrasi Patriot dirancang dengan pendekatan strategis untuk memastikan pembangunan kawasan transmigrasi berjalan efektif, inklusif, dan tepat sasaran.</p>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper"><iconify-icon icon="lucide:users"></iconify-icon></div>
+                        <h3 class="feature-title">Target Peserta</h3>
+                        <p class="feature-desc">Melibatkan 1.500 mahasiswa unggul dan tenaga ahli muda dari berbagai disiplin ilmu.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper"><iconify-icon icon="lucide:map-pin"></iconify-icon></div>
+                        <h3 class="feature-title">Lokasi Prioritas</h3>
+                        <p class="feature-desc">Difokuskan pada 154 kawasan transmigrasi prioritas di seluruh penjuru Nusantara.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper"><iconify-icon icon="lucify:calendar-clock"></iconify-icon></div>
+                        <h3 class="feature-title">Durasi Program</h3>
+                        <p class="feature-desc">Pelaksanaan intensif dan berkelanjutan sejalan dengan Roadmap Renstra 2025-2029.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper"><iconify-icon icon="lucide:trending-up"></iconify-icon></div>
+                        <h3 class="feature-title">Output Harapan</h3>
+                        <p class="feature-desc">Mewujudkan kemandirian ekonomi, inovasi desa, dan peningkatan taraf hidup masyarakat.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="kontak">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <a href="#" class="logo" style="margin-bottom: 10px; display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2Fe4555ffb-ad55-4a94-acb9-eab45e534938?alt=media&token=3a10a3ef-6f3a-40f0-a6bb-d8ac3e6fa465" alt="Logo" class="logo-img" style="width: 45px; height: 45px; border-radius: 50%;">
+                        <div>
+                            <span class="logo-title" style="font-size: 18px; font-weight: 700; display: block; text-transform: uppercase;">Kementerian Transmigrasi RI</span>
+                            <span class="logo-subtitle" style="font-size: 12px; opacity: 0.8; display: block;">Republik Indonesia</span>
+                        </div>
+                    </a>
+                    <p class="footer-desc">Berkomitmen penuh untuk memajukan kesejahteraan masyarakat melalui pembangunan kawasan transmigrasi yang berkelanjutan, inklusif, dan mandiri.</p>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-title">Tautan Cepat</h4>
+                    <ul>
+                        <li><a href="profil.html">Profil Program</a></li>
+                        <li><a href="programdetail.html">Fokus Utama</a></li>
+                        <li><a href="regulasi.html">Dokumen Regulasi</a></li>
+                        <li><a href="formregistrasi.html">Pendaftaran Patriot</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4 class="footer-title">Pusat Kontak</h4>
+                    <div class="contact-item">
+                        <iconify-icon icon="lucide:map-pin"></iconify-icon>
+                        <span>Jl. TMP. Kalibata No.17, Jakarta Selatan</span>
+                    </div>
+                    <div class="contact-item">
+                        <iconify-icon icon="lucide:phone"></iconify-icon>
+                        <span>(021) 7999999</span>
+                    </div>
+                    <div class="contact-item">
+                        <iconify-icon icon="lucide:mail"></iconify-icon>
+                        <span>info@transmigrasi.go.id</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Kementerian Transmigrasi Republik Indonesia. Hak Cipta Dilindungi Undang-Undang.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontak Kami - Kementerian Transmigrasi RI</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <style>
+    :root {
+      /* Color Palette - Blue & Gold */
+      --primary: #0d3244;
+      --primary-foreground: #ffffff;
+      --accent: #c29642;
+      --accent-foreground: #ffffff;
+      --background: #ffffff;
+      --foreground: #111827;
+      --muted: #f3f5f7;
+      --muted-foreground: #61717c;
+      --border: #e5e7eb;
+      --input: #f6f8fa;
+      --card: #ffffff;
+      
+      /* Spacing & Radius */
+      --radius-md: 6px;
+      --radius-lg: 12px;
+      --container-max: 1200px;
+      --font-main: 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+    }
+
+    .layout {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    .header {
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+      height: 80px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: contain;
+      background: white;
+      padding: 2px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .logo-subtitle {
+      font-size: 12px;
+      opacity: 0.8;
+    }
+
+    .nav {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-link {
+      color: var(--primary-foreground);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      padding: 8px 0;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      opacity: 1;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 80px 0;
+      flex: 1;
+    }
+
+    .contact-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 60px;
+    }
+
+    .contact-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    .contact-subtitle {
+      color: var(--muted-foreground);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    /* Info Cards */
+    .info-list {
+      display: grid;
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      background: var(--muted);
+      border-radius: var(--radius-md);
+    }
+
+    .info-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--primary);
+      color: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .info-content h4 {
+      font-size: 16px;
+      margin-bottom: 4px;
+      color: var(--primary);
+    }
+
+    .info-content p, .info-content a {
+      font-size: 14px;
+      color: var(--muted-foreground);
+      text-decoration: none;
+    }
+
+    /* Map */
+    .map-container {
+      height: 250px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    /* Form Card */
+    .contact-form-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--input);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-family: inherit;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--accent);
+      background: #fff;
+    }
+
+    .textarea-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background 0.3s;
+    }
+
+    .btn-submit:hover {
+      background: #1a4a5f;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--primary);
+      color: white;
+      padding: 60px 0 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-title {
+      color: var(--accent);
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="layout">
+    <header class="header">
+      <div class="container header-content">
+        <a href="#" class="logo">
+          <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2F0f03f4c4-c2c7-45c6-bcfe-0e1e056b9603?alt=media&token=ff699f1f-0c0e-4bc9-9afe-43a410f70e6a" alt="Logo">
+          <div class="logo-text">
+            <span class="logo-title">Kementerian Transmigrasi RI</span>
+            <span class="logo-subtitle">Republik Indonesia</span>
+          </div>
+        </a>
+        <nav class="nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="profil.html" class="nav-link">Profil</a>
+          <a href="regulasi.html" class="nav-link">Regulasi</a>
+          <a href="programdetail.html" class="nav-link">Program</a>
+          <a href="kontakkami.html" class="nav-link active">Kontak</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="contact-section">
+      <div class="container">
+        <div class="contact-header">
+          <h1 class="contact-title">Hubungi Kami</h1>
+          <p class="contact-subtitle">Kami siap membantu Anda. Silakan hubungi kami melalui informasi di bawah atau gunakan formulir pesan.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-left">
+            <div class="info-list">
+              <div class="info-item">
+                <div class="info-icon"><iconify-icon icon="lucide:map-pin" size="24"></iconify-icon></div>
+                <div class="info-content">
+                  <h4>Alamat Kantor</h4>
+                  <p>Jl. TMP Kalibata No.17, Jakarta Selatan, 12750<br>DKI Jakarta, Indonesia</p>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon"><iconify-icon icon="lucide:mail" size="24"></iconify-icon></div>
+                <div class="info-content">
+                  <h4>Email Resmi</h4>
+                  <p>humas@transmigrasi.go.id</p>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon"><iconify-icon icon="lucide:phone-call" size="24"></iconify-icon></div>
+                <div class="info-content">
+                  <h4>Nomor Telepon</h4>
+                  <p>021 - 7994372</p>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon"><iconify-icon icon="lucide:at-sign" size="24"></iconify-icon></div>
+                <div class="info-content">
+                  <h4>Media Sosial</h4>
+                  <a href="https://www.instagram.com/kementrans.ri/" target="_blank">@kementrans.ri</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="map-container">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0717255152345!2d106.8456678!3d-6.254284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3ae6177894d%3A0xf63980b196887550!2sKementerian%20Desa%2C%20Pembangunan%20Daerah%20Tertinggal%20Dan%20Transmigrasi!5e0!3m2!1sid!2sid!4v1710000000000!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+          </div>
+
+          <div class="contact-right">
+            <form class="contact-form-card">
+              <div class="form-group">
+                <label class="form-label">Nama Lengkap</label>
+                <input type="text" class="form-control" placeholder="Masukkan nama Anda">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Alamat Email</label>
+                <input type="email" class="form-control" placeholder="contoh@email.com">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pesan Anda</label>
+                <textarea class="form-control textarea-control" placeholder="Tuliskan pertanyaan atau pesan Anda di sini..."></textarea>
+              </div>
+              <button type="submit" class="btn-submit">
+                <iconify-icon icon="lucide:send"></iconify-icon>
+                Kirim Pesan
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="logo" style="margin-bottom: 20px;">
+              <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2F0f03f4c4-c2c7-45c6-bcfe-0e1e056b9603?alt=media&token=ff699f1f-0c0e-4bc9-9afe-43a410f70e6a" alt="Logo" class="logo-img" style="width: 45px; height: 45px; border-radius: 50%;">
+              <div class="logo-text">
+                <span class="logo-title" style="font-size: 18px; font-weight: 700; display: block; text-transform: uppercase;">Kementerian Transmigrasi RI</span>
+                <span class="logo-subtitle" style="font-size: 12px; opacity: 0.8; display: block;">Republik Indonesia</span>
+              </div>
+            </div>
+            <p style="font-size: 14px; opacity: 0.7;">Berkomitmen penuh untuk memajukan kesejahteraan masyarakat melalui pembangunan kawasan transmigrasi yang berkelanjutan.</p>
+          </div>
+          
+          <div>
+            <h4 class="footer-title">Tautan Cepat</h4>
+            <ul class="footer-links">
+              <li><a href="#">Profil Program</a></li>
+              <li><a href="#">Fokus Utama</a></li>
+              <li><a href="#">Dokumen Regulasi</a></li>
+              <li><a href="#">Pendaftaran Patriot</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="footer-title">Pusat Kontak</h4>
+            <p style="font-size: 14px; opacity: 0.7;">
+              Jl. TMP Kalibata No.17, Jakarta Selatan<br>
+              021 - 7994372<br>
+              humas@transmigrasi.go.id
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          &copy; 2026 Kementerian Transmigrasi Republik Indonesia. Hak Cipta Dilindungi Undang-Undang.
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</body>
+</html>
