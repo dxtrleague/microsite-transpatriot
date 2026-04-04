@@ -12,6 +12,129 @@
         box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     }
 }
+/* Tambahan responsif untuk konten profil program dan fitur */
+.profil-list {
+    list-style: none;
+    padding: 0;
+    margin: 32px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+.profil-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+}
+.profil-list .list-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--muted, #f3f4f6);
+    border-radius: var(--radius-md, 6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: var(--primary, #0d3244);
+    flex-shrink: 0;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+}
+.feature-card {
+    background: #fff;
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: var(--radius-lg, 8px);
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+}
+.feature-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    background: var(--primary, #0d3244);
+    border-radius: var(--radius-md, 6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 18px;
+}
+.feature-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: var(--foreground, #111827);
+}
+.feature-desc {
+    font-size: 15px;
+    color: var(--muted-foreground, #6b7280);
+    margin: 0;
+}
+
+@media (max-width: 900px) {
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+@media (max-width: 700px) {
+    .section-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .section-grid > div {
+        width: 100%;
+        min-width: 0;
+    }
+    .section-grid img {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        display: block;
+        margin-top: 16px;
+    }
+    .profil-list {
+        gap: 18px;
+    }
+    .profil-list li {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 0;
+    }
+    .profil-list .list-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+    }
+    .section-title {
+        font-size: 26px;
+    }
+    .section-desc {
+        font-size: 15px;
+    }
+    }
+    .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    .profil-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .feature-card {
+        padding: 20px 12px;
+    }
+}
 /* Responsive Navigation & Hamburger */
 @media (max-width: 900px) {
     .container {
