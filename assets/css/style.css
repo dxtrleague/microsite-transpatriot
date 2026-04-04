@@ -34,7 +34,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
+    font-size: 32px;
     color: var(--primary, #0d3244);
     flex-shrink: 0;
 }
@@ -68,13 +68,13 @@
     margin-bottom: 18px;
 }
 .feature-title {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 700;
     margin: 0 0 10px 0;
     color: var(--foreground, #111827);
 }
 .feature-desc {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--muted-foreground, #6b7280);
     margin: 0;
 }
@@ -113,13 +113,13 @@
     .profil-list .list-icon {
         width: 40px;
         height: 40px;
-        font-size: 22px;
+        font-size: 32px;
     }
     .section-title {
-        font-size: 26px;
+        font-size: 32px;
     }
     .section-desc {
-        font-size: 15px;
+        font-size: 16px;
     }
     }
     .feature-grid {
@@ -153,10 +153,10 @@
         padding: 0 12px;
     }
     .logo-title {
-        font-size: 13px;
+        font-size: 24px;
     }
     .logo-subtitle {
-        font-size: 10px;
+        font-size: 14px;
     }
     .nav {
         display: none !important;
@@ -218,7 +218,9 @@
 }
 
 body {
-    font-family: 'DM Sans', Arial, sans-serif;
+    font-family: var(--font-family);
+    font-size: 16px;
+    
     margin: 0;
     padding: 0;
     background: var(--background, #f9f9f9);
@@ -241,7 +243,7 @@ body {
     --radius-md: 6px;
     --radius-lg: 8px;
     --radius-xl: 12px;
-    --font-family-body: 'DM Sans', Arial, sans-serif;
+    --font-family: 'Inter', sans-serif;
 }
 
 .export-wrapper {
@@ -249,7 +251,7 @@ body {
     padding: 0;
     background-color: var(--background);
     color: var(--foreground);
-    font-family: var(--font-family-body);
+    font-family: var(--font-family);
 }
 
 .layout {
@@ -259,7 +261,7 @@ body {
     width: 100%;
     background-color: var(--background);
     color: var(--foreground);
-    font-family: var(--font-family-body);
+    font-family: var(--font-family);
 }
 
 .container {
@@ -304,14 +306,14 @@ body {
     gap: 2px;
 }
 .logo-title {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 700;
     letter-spacing: 0.5px;
     color: var(--primary-foreground);
     text-transform: uppercase;
 }
 .logo-subtitle {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
     color: var(--primary-foreground);
     opacity: 0.8;
@@ -324,7 +326,7 @@ body {
 .nav-link {
     color: var(--primary-foreground);
     text-decoration: none;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
     opacity: 0.8;
     padding: 8px 0;
@@ -354,14 +356,14 @@ body {
 .ticker-badge {
     background-color: var(--primary);
     color: var(--primary-foreground);
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
     padding: 4px 10px;
     border-radius: var(--radius-sm);
     white-space: nowrap;
 }
 .ticker-text {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     white-space: nowrap;
     overflow: hidden;
@@ -405,14 +407,14 @@ body {
     max-width: 800px;
 }
 .hero-title {
-    font-size: 56px;
+    font-size: 48px;
     font-weight: 800;
     margin: 0 0 24px 0;
     line-height: 1.15;
     color: #ffffff;
 }
 .hero-description {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 500;
     margin: 0 0 40px 0;
     line-height: 1.6;
@@ -516,7 +518,7 @@ body {
     margin: 0 auto 64px auto;
 }
 .section-title {
-    font-size: 36px;
+    font-size: 32px;
     font-weight: 700;
     margin: 0 0 20px 0;
     color: var(--foreground);
@@ -568,13 +570,13 @@ body {
     margin-bottom: 24px;
 }
 .card-title {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700;
     margin: 0 0 16px 0;
     color: var(--card-foreground);
 }
 .card-desc {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.6;
     color: var(--muted-foreground);
     margin: 0;
@@ -616,7 +618,7 @@ body {
     color: var(--foreground);
 }
 .list-desc {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--muted-foreground);
     margin: 0;
 }
@@ -637,7 +639,7 @@ body {
     margin-bottom: 24px;
 }
 .footer-desc {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.6;
     opacity: 0.8;
     max-width: 400px;
@@ -659,7 +661,7 @@ body {
 .footer-links a {
     color: var(--primary-foreground);
     text-decoration: none;
-    font-size: 15px;
+    font-size: 16px;
     opacity: 0.8;
 }
 .footer-contact {
@@ -671,7 +673,7 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 15px;
+    font-size: 16px;
     opacity: 0.8;
 }
 .footer-bottom {

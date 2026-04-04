@@ -12,6 +12,33 @@
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
   <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- STANDARDIZASI FONT GLOBAL -->
+    <style id="global-typography">
+        body, p, a, span, div, input, button, select, textarea {
+            font-family: 'Inter', sans-serif !important;
+        }
+        body { font-size: 16px !important; }
+        
+        /* Typography Scale */
+        .logo-title { font-size: 20px !important; }
+        .logo-subtitle { font-size: 14px !important; }
+        .nav-link { font-size: 16px !important; }
+        
+        .hero-title, .hero h1 { font-size: 48px !important; }
+        .section-title, .contact-title { font-size: 32px !important; }
+        .card-title, .fokus-card h3, .feature-title, .stat-value, .doc-title, .profil-list strong { font-size: 20px !important; }
+        
+        .hero-desc, .section-desc, p { font-size: 16px !important; }
+        .footer-title, h4 { font-size: 18px !important; }
+        .footer-bottom, .footer-links a, .hero-badge { font-size: 14px !important; }
+        
+        /* Mobile Scaling */
+        @media (max-width: 768px) {
+            .hero-title, .hero h1 { font-size: 32px !important; }
+            .section-title, .contact-title { font-size: 24px !important; }
+        }
+    </style>
 </head>
 <body>
   <div class="layout">
@@ -44,20 +71,20 @@
         <div class="container">
           <div class="section-header-center" style="text-align:center; max-width:700px; margin:0 auto 40px;">
             <div class="badge" style="background:#f7f7f7; color:#c08e41; font-weight:700; padding:8px 20px; border-radius:8px; display:inline-block; margin-bottom:16px;">CAPAIAN TARGET</div>
-            <h2 class="section-title" style="font-size:32px; font-weight:800; margin-bottom:8px;">Statistik Utama</h2>
+            <h2 class="section-title" style="font-size: 32px; font-weight:800; margin-bottom:8px;">Statistik Utama</h2>
             <p class="section-desc" style="color:#6b7280;">Proyeksi capaian strategis pembangunan kawasan transmigrasi RI dalam pembangunan kawasan transmigrasi pada tahun 2029.</p>
           </div>
           <div class="stat-grid" style="display:flex; gap:32px; justify-content:center; margin-bottom:48px; flex-wrap:wrap;">
             <div class="stat-card" style="background:#fff; border-radius:16px; box-shadow:0 2px 12px rgba(0,0,0,0.04); padding:40px 32px; min-width:280px; flex:1 1 280px; max-width:400px; text-align:center;">
-              <h3 class="stat-value" style="font-size:48px; font-weight:800; color:#0d3244; margin-bottom:8px;">7,29%</h3>
-              <p style="font-size:16px; color:#6b7280; margin-bottom:16px;">Target Kontribusi Tenaga Ahli (2029)</p>
+              <h3 class="stat-value" style="font-size: 24px; font-weight:800; color:#0d3244; margin-bottom:8px;">7,29%</h3>
+              <p style="font-size: 16px; color:#6b7280; margin-bottom:16px;">Target Kontribusi Tenaga Ahli (2029)</p>
               <div class="progress-track" style="height:8px; background:#eee; border-radius:10px; margin-top:20px; overflow:hidden;">
                 <div class="progress-fill" style="height:100%; background:#c08e41; width:7.29%"></div>
               </div>
             </div>
             <div class="stat-card" style="background:#fff; border-radius:16px; box-shadow:0 2px 12px rgba(0,0,0,0.04); padding:40px 32px; min-width:280px; flex:1 1 280px; max-width:400px; text-align:center;">
-              <h3 class="stat-value" style="font-size:48px; font-weight:800; color:#0d3244; margin-bottom:8px;">12,2%</h3>
-              <p style="font-size:16px; color:#6b7280; margin-bottom:16px;">Pembangunan Infrastruktur Patriot (2029)</p>
+              <h3 class="stat-value" style="font-size: 24px; font-weight:800; color:#0d3244; margin-bottom:8px;">12,2%</h3>
+              <p style="font-size: 16px; color:#6b7280; margin-bottom:16px;">Pembangunan Infrastruktur Patriot (2029)</p>
               <div class="progress-track" style="height:8px; background:#eee; border-radius:10px; margin-top:20px; overflow:hidden;">
                 <div class="progress-fill" style="height:100%; background:#c08e41; width:12.2%"></div>
               </div>
@@ -70,25 +97,25 @@
         <div class="container">
           <div class="section-header-center" style="text-align:center; max-width:700px; margin:0 auto 40px;">
             <div class="badge" style="background:#f7f7f7; color:#c08e41; font-weight:700; padding:8px 20px; border-radius:8px; display:inline-block; margin-bottom:16px;">DOKUMEN LEGAL</div>
-            <h2 class="section-title" style="font-size:32px; font-weight:800; margin-bottom:8px;">Regulasi & Kebijakan</h2>
+            <h2 class="section-title" style="font-size: 32px; font-weight:800; margin-bottom:8px;">Regulasi & Kebijakan</h2>
             <p class="section-desc" style="color:#6b7280;">Unduh dokumen legal dan pedoman kebijakan yang menjadi landasan strategis pelaksanaan Program Transmigrasi Patriot.</p>
           </div>
           <div class="doc-list" style="display:flex; flex-direction:column; gap:20px; max-width:800px; margin:0 auto;">
             <div class="doc-item" style="display:flex; align-items:center; gap:20px; padding:24px 32px; background:#fff; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.04); border:1px solid #e5e7eb;">
               <iconify-icon icon="lucide:file-text" style="font-size:32px; color:#0d3244;"></iconify-icon>
               <div class="doc-info" style="flex:1;">
-                <h4 class="doc-title" style="font-size:16px; font-weight:700; margin-bottom:4px; color:#0d3244;">Peraturan Menteri Transmigrasi No. 3 Tahun 2026</h4>
-                <p class="doc-desc" style="font-size:14px; color:#6b7280;">Pedoman teknis operasional Program Transmigrasi Patriot.</p>
+                <h4 class="doc-title" style="font-size: 18px; font-weight:700; margin-bottom:4px; color:#0d3244;">Peraturan Menteri Transmigrasi No. 3 Tahun 2026</h4>
+                <p class="doc-desc" style="font-size: 16px; color:#6b7280;">Pedoman teknis operasional Program Transmigrasi Patriot.</p>
               </div>
-              <a href="#" class="btn-download" style="display:flex; align-items:center; gap:8px; background:#0d3244; color:white; padding:10px 20px; border-radius:8px; text-decoration:none; font-size:14px; font-weight:600;"><iconify-icon icon="lucide:download"></iconify-icon> Unduh PDF</a>
+              <a href="#" class="btn-download" style="display:flex; align-items:center; gap:8px; background:#0d3244; color:white; padding:10px 20px; border-radius:8px; text-decoration:none; font-size: 16px; font-weight:600;"><iconify-icon icon="lucide:download"></iconify-icon> Unduh PDF</a>
             </div>
             <div class="doc-item" style="display:flex; align-items:center; gap:20px; padding:24px 32px; background:#fff; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.04); border:1px solid #e5e7eb;">
               <iconify-icon icon="lucide:book-open" style="font-size:32px; color:#0d3244;"></iconify-icon>
               <div class="doc-info" style="flex:1;">
-                <h4 class="doc-title" style="font-size:16px; font-weight:700; margin-bottom:4px; color:#0d3244;">Renstra Kementrans 2025-2029</h4>
-                <p class="doc-desc" style="font-size:14px; color:#6b7280;">Rencana Strategis Pembangunan Kawasan Transmigrasi Nasional dan rancangannya masing-masing.</p>
+                <h4 class="doc-title" style="font-size: 18px; font-weight:700; margin-bottom:4px; color:#0d3244;">Renstra Kementrans 2025-2029</h4>
+                <p class="doc-desc" style="font-size: 16px; color:#6b7280;">Rencana Strategis Pembangunan Kawasan Transmigrasi Nasional dan rancangannya masing-masing.</p>
               </div>
-              <a href="#" class="btn-download" style="display:flex; align-items:center; gap:8px; background:#0d3244; color:white; padding:10px 20px; border-radius:8px; text-decoration:none; font-size:14px; font-weight:600;"><iconify-icon icon="lucide:download"></iconify-icon> Unduh PDF</a>
+              <a href="#" class="btn-download" style="display:flex; align-items:center; gap:8px; background:#0d3244; color:white; padding:10px 20px; border-radius:8px; text-decoration:none; font-size: 16px; font-weight:600;"><iconify-icon icon="lucide:download"></iconify-icon> Unduh PDF</a>
             </div>
           </div>
         </div>
@@ -102,8 +129,8 @@
                     <a href="#" class="logo" style="margin-bottom: 10px; display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
                         <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2Fe4555ffb-ad55-4a94-acb9-eab45e534938?alt=media&token=3a10a3ef-6f3a-40f0-a6bb-d8ac3e6fa465" alt="Logo" class="logo-img" style="width: 45px; height: 45px; border-radius: 50%;">
                         <div>
-                            <span class="logo-title" style="font-size: 18px; font-weight: 700; display: block; text-transform: uppercase;">Kementerian Transmigrasi RI</span>
-                            <span class="logo-subtitle" style="font-size: 12px; opacity: 0.8; display: block;">Republik Indonesia</span>
+                            <span class="logo-title" style="font-size: 20px; font-weight: 700; display: block; text-transform: uppercase;">Kementerian Transmigrasi RI</span>
+                            <span class="logo-subtitle" style="font-size: 14px; opacity: 0.8; display: block;">Republik Indonesia</span>
                         </div>
                     </a>
                     <p class="footer-desc">Berkomitmen penuh untuk memajukan kesejahteraan masyarakat melalui pembangunan kawasan transmigrasi yang berkelanjutan, inklusif, dan mandiri.</p>

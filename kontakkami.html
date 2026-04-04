@@ -44,7 +44,7 @@
       --radius-md: 6px;
       --radius-lg: 12px;
       --container-max: 1200px;
-      --font-main: 'Inter', sans-serif;
+      --font-family: 'Inter', sans-serif;
     }
 
     * {
@@ -54,7 +54,9 @@
     }
 
     body {
-      font-family: var(--font-main);
+    font-family: var(--font-family);
+    font-size: 16px;
+      
       background-color: var(--background);
       color: var(--foreground);
       line-height: 1.6;
@@ -116,14 +118,14 @@
     }
 
     .logo-title {
-      font-size: 16px;
+      font-size: 24px;
       font-weight: 700;
       letter-spacing: 0.5px;
       text-transform: uppercase;
     }
 
     .logo-subtitle {
-      font-size: 12px;
+      font-size: 14px;
       opacity: 0.8;
     }
 
@@ -135,7 +137,7 @@
     .nav-link {
       color: var(--primary-foreground);
       text-decoration: none;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 500;
       opacity: 0.7;
       transition: all 0.3s ease;
@@ -160,7 +162,7 @@
     }
 
     .contact-title {
-      font-size: 36px;
+      font-size: 32px;
       font-weight: 700;
       color: var(--primary);
       margin-bottom: 16px;
@@ -239,7 +241,7 @@
 
     .form-label {
       display: block;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
       margin-bottom: 8px;
       text-transform: uppercase;
@@ -253,7 +255,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       font-family: inherit;
-      font-size: 15px;
+      font-size: 16px;
       outline: none;
     }
 
@@ -304,7 +306,7 @@
     .footer-title {
       color: var(--accent);
       margin-bottom: 20px;
-      font-size: 16px;
+      font-size: 18px;
     }
 
     .footer-links {
@@ -318,14 +320,14 @@
     .footer-links a {
       color: rgba(255,255,255,0.7);
       text-decoration: none;
-      font-size: 14px;
+      font-size: 16px;
     }
 
     .footer-bottom {
       border-top: 1px solid rgba(255,255,255,0.1);
       padding-top: 20px;
       text-align: center;
-      font-size: 13px;
+      font-size: 14px;
       color: rgba(255,255,255,0.5);
     }
 
@@ -346,10 +348,10 @@
         padding: 0 12px;
       }
       .logo-title {
-        font-size: 13px;
+        font-size: 24px;
       }
       .logo-subtitle {
-        font-size: 10px;
+        font-size: 14px;
       }
       .nav {
         display: none;
@@ -404,7 +406,7 @@
           font-size: 18px;
         }
         .contact-title {
-          font-size: 22px;
+          font-size: 32px;
         }
         .contact-header {
           margin-bottom: 32px;
@@ -443,6 +445,33 @@
       }
     }
   </style>
+
+    <!-- STANDARDIZASI FONT GLOBAL -->
+    <style id="global-typography">
+        body, p, a, span, div, input, button, select, textarea {
+            font-family: 'Inter', sans-serif !important;
+        }
+        body { font-size: 16px !important; }
+        
+        /* Typography Scale */
+        .logo-title { font-size: 20px !important; }
+        .logo-subtitle { font-size: 14px !important; }
+        .nav-link { font-size: 16px !important; }
+        
+        .hero-title, .hero h1 { font-size: 48px !important; }
+        .section-title, .contact-title { font-size: 32px !important; }
+        .card-title, .fokus-card h3, .feature-title, .stat-value, .doc-title, .profil-list strong { font-size: 20px !important; }
+        
+        .hero-desc, .section-desc, p { font-size: 16px !important; }
+        .footer-title, h4 { font-size: 18px !important; }
+        .footer-bottom, .footer-links a, .hero-badge { font-size: 14px !important; }
+        
+        /* Mobile Scaling */
+        @media (max-width: 768px) {
+            .hero-title, .hero h1 { font-size: 32px !important; }
+            .section-title, .contact-title { font-size: 24px !important; }
+        }
+    </style>
 </head>
 <body>
 
@@ -550,11 +579,11 @@
             <div class="logo" style="margin-bottom: 20px;">
               <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2F0f03f4c4-c2c7-45c6-bcfe-0e1e056b9603?alt=media&token=ff699f1f-0c0e-4bc9-9afe-43a410f70e6a" alt="Logo" class="logo-img" style="width: 45px; height: 45px; border-radius: 50%;">
               <div class="logo-text">
-                <span class="logo-title" style="font-size: 18px; font-weight: 700; display: block; text-transform: uppercase;">Kementerian Transmigrasi RI</span>
-                <span class="logo-subtitle" style="font-size: 12px; opacity: 0.8; display: block;">Republik Indonesia</span>
+                <span class="logo-title" style="font-size: 20px; font-weight: 700; display: block; text-transform: uppercase;">Kementerian Transmigrasi RI</span>
+                <span class="logo-subtitle" style="font-size: 14px; opacity: 0.8; display: block;">Republik Indonesia</span>
               </div>
             </div>
-            <p style="font-size: 14px; opacity: 0.7;">Berkomitmen penuh untuk memajukan kesejahteraan masyarakat melalui pembangunan kawasan transmigrasi yang berkelanjutan.</p>
+            <p style="font-size: 16px; opacity: 0.7;">Berkomitmen penuh untuk memajukan kesejahteraan masyarakat melalui pembangunan kawasan transmigrasi yang berkelanjutan.</p>
           </div>
           
           <div>
@@ -569,7 +598,7 @@
 
           <div>
             <h4 class="footer-title">Pusat Kontak</h4>
-            <p style="font-size: 14px; opacity: 0.7;">
+            <p style="font-size: 16px; opacity: 0.7;">
               Jl. TMP Kalibata No.17, Jakarta Selatan<br>
               021 - 7994372<br>
               humas@transmigrasi.go.id

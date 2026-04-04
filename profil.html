@@ -39,13 +39,15 @@
             --accent: #c29642;
             --radius-md: 6px;
             --radius-lg: 8px;
-            --font-family-body: 'Inter', sans-serif;
+            --font-family: 'Inter', sans-serif;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: var(--font-family-body);
+    font-family: var(--font-family);
+    font-size: 16px;
+            
             background-color: var(--background);
             color: var(--foreground);
             line-height: 1.6;
@@ -80,14 +82,14 @@
 
         .logo { display: flex; align-items: center; gap: 16px; text-decoration: none; color: inherit; }
         .logo img { width: 50px; height: 50px; border-radius: 50%; object-fit: contain; }
-        .logo-title { font-size: 18px; font-weight: 700; display: block; text-transform: uppercase; line-height: 1.2; }
-        .logo-subtitle { font-size: 12px; opacity: 0.8; display: block; text-transform: uppercase; }
+        .logo-title { font-size: 24px; font-weight: 700; display: block; text-transform: uppercase; line-height: 1.2; }
+        .logo-subtitle { font-size: 14px; opacity: 0.8; display: block; text-transform: uppercase; }
 
         .nav { display: flex; gap: 24px; }
         .nav-link { 
             color: var(--primary-foreground); 
             text-decoration: none; 
-            font-size: 14px; 
+            font-size: 16px; 
             font-weight: 500; 
             opacity: 0.8;
             padding: 8px 0;
@@ -112,14 +114,14 @@
             color: var(--warning-foreground);
             padding: 6px 12px;
             border-radius: 4px;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 700;
             text-transform: uppercase;
             margin-bottom: 20px;
         }
 
-        .section-title { font-size: 36px; font-weight: 800; margin-bottom: 20px; color: var(--primary); }
-        .section-desc { font-size: 17px; color: var(--muted-foreground); margin-bottom: 30px; }
+        .section-title { font-size: 32px; font-weight: 800; margin-bottom: 20px; color: var(--primary); }
+        .section-desc { font-size: 16px; color: var(--muted-foreground); margin-bottom: 30px; }
 /* Style Baru: Fokus Utama Grid */
         .fokus-grid { 
             display: grid; 
@@ -151,7 +153,7 @@
             font-size: 32px; 
             margin-bottom: 20px;
         }
-        .fokus-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: var(--primary); }
+        .fokus-card h3 { font-size: 24px; font-weight: 700; margin-bottom: 12px; color: var(--primary); }
         .fokus-card p { font-size: 14px; color: var(--muted-foreground); line-height: 1.5; }
 
         /* Feature Grid (Target, Lokasi, etc) */
@@ -164,7 +166,7 @@
         .feature-icon-wrapper { 
             width: 60px; height: 60px; background: rgba(194, 150, 66, 0.1); 
             border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-            margin: 0 auto 20px; font-size: 28px; color: var(--warning);
+            margin: 0 auto 20px; font-size: 32px; color: var(--warning);
         }
 
         /* Profil List */
@@ -173,7 +175,7 @@
         .list-icon { 
             width: 44px; height: 44px; background: rgba(194, 150, 66, 0.1); 
             color: var(--warning); border-radius: 8px; 
-            display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;
         }
         .profil-list strong { display: block; font-size: 16px; margin-bottom: 4px; }
         .profil-list p { font-size: 14px; color: var(--muted-foreground); }
@@ -184,10 +186,10 @@
         .footer-title { color: var(--warning); margin-bottom: 20px; font-size: 18px; }
         .footer-links ul { list-style: none; }
         .footer-links li { margin-bottom: 12px; }
-        .footer-links a { color: #fff; text-decoration: none; opacity: 0.7; font-size: 14px; }
+        .footer-links a { color: #fff; text-decoration: none; opacity: 0.7; font-size: 16px; }
         .footer-contact { display: flex; flex-direction: column; gap: 15px; }
         .contact-item { display: flex; align-items: center; gap: 10px; font-size: 14px; opacity: 0.8; }
-        .footer-bottom { text-align: center; padding: 25px 0; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; opacity: 0.6; }
+        .footer-bottom { text-align: center; padding: 25px 0; border-top: 1px solid rgba(255,255,255,0.1); font-size: 14px; opacity: 0.6; }
 
         /* Hamburger menu */
         .hamburger {
@@ -218,10 +220,37 @@
             .nav-link { padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.1); }
             .hamburger { display: flex; }
             .section { padding: 50px 0; }
-            .section-title { font-size: 28px; }
+            .section-title { font-size: 32px; }
             .fokus-card { padding: 32px 20px; }
         }
         
+    </style>
+
+    <!-- STANDARDIZASI FONT GLOBAL -->
+    <style id="global-typography">
+        body, p, a, span, div, input, button, select, textarea {
+            font-family: 'Inter', sans-serif !important;
+        }
+        body { font-size: 16px !important; }
+        
+        /* Typography Scale */
+        .logo-title { font-size: 20px !important; }
+        .logo-subtitle { font-size: 14px !important; }
+        .nav-link { font-size: 16px !important; }
+        
+        .hero-title, .hero h1 { font-size: 48px !important; }
+        .section-title, .contact-title { font-size: 32px !important; }
+        .card-title, .fokus-card h3, .feature-title, .stat-value, .doc-title, .profil-list strong { font-size: 20px !important; }
+        
+        .hero-desc, .section-desc, p { font-size: 16px !important; }
+        .footer-title, h4 { font-size: 18px !important; }
+        .footer-bottom, .footer-links a, .hero-badge { font-size: 14px !important; }
+        
+        /* Mobile Scaling */
+        @media (max-width: 768px) {
+            .hero-title, .hero h1 { font-size: 32px !important; }
+            .section-title, .contact-title { font-size: 24px !important; }
+        }
     </style>
 </head>
 <body>
@@ -326,8 +355,8 @@
                     <a href="#" class="logo" style="margin-bottom: 10px; display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
                         <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2Fe4555ffb-ad55-4a94-acb9-eab45e534938?alt=media&token=3a10a3ef-6f3a-40f0-a6bb-d8ac3e6fa465" alt="Logo" class="logo-img" style="width: 45px; height: 45px; border-radius: 50%;">
                         <div>
-                            <span class="logo-title" style="font-size: 18px; font-weight: 700; display: block; text-transform: uppercase;">Kementerian Transmigrasi RI</span>
-                            <span class="logo-subtitle" style="font-size: 12px; opacity: 0.8; display: block;">Republik Indonesia</span>
+                            <span class="logo-title" style="font-size: 20px; font-weight: 700; display: block; text-transform: uppercase;">Kementerian Transmigrasi RI</span>
+                            <span class="logo-subtitle" style="font-size: 14px; opacity: 0.8; display: block;">Republik Indonesia</span>
                         </div>
                     </a>
                     <p class="footer-desc">Berkomitmen penuh untuk memajukan kesejahteraan masyarakat melalui pembangunan kawasan transmigrasi yang berkelanjutan, inklusif, dan mandiri.</p>
