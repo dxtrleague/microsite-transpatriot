@@ -1,45 +1,40 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program - Transmigrasi Patriot</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Program Detail - Transmigrasi Patriot</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
     <style>
         :root {
             --background: #ffffff;
-            --foreground: #111827;
-            --border: #e5e7eb;
+            --foreground: #0d3244;
+            --border: #00000014;
             --primary: #0d3244;
             --primary-foreground: #ffffff;
-            --muted: #f9fafb;
-            --muted-foreground: #6b7280;
-            --warning: #c29642;
-            --warning-foreground: #ffffff;
-            --card: #ffffff;
-            --card-foreground: #111827;
-            --radius-sm: 4px;
-            --radius-md: 6px;
-            --radius-lg: 8px;
-            --radius-xl: 12px;
-            --font-family-body: 'Inter', system-ui, -apple-system, sans-serif;
+            --accent: #c08e41;
+            --muted: #f3f5f7;
+            --muted-foreground: #61717c;
+            --radius: 12px;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
         }
-
+        
         body {
+            font-family: 'Inter', sans-serif;
             background-color: var(--background);
             color: var(--foreground);
-            font-family: var(--font-family-body);
-            line-height: 1.5;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -49,17 +44,16 @@
             padding: 0 24px;
         }
 
-        /* Header */
+        /* --- HEADER & NAVIGATION --- */
         .header {
             background-color: var(--primary);
-            color: var(--primary-foreground);
             height: 80px;
             display: flex;
             align-items: center;
             position: sticky;
             top: 0;
-            z-index: 50;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .header-content {
@@ -72,338 +66,190 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
             text-decoration: none;
-            color: inherit;
+            color: white;
+            z-index: 1001;
         }
 
-        .logo-img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            border-radius: 50%;
-            background: white;
-            padding: 2px;
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-title {
-            font-size: 16px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .logo-subtitle {
-            font-size: 12px;
-            font-weight: 500;
-            opacity: 0.8;
-            text-transform: uppercase;
-        }
+        .logo img { height: 40px; }
+        .logo span { font-weight: 700; font-size: 1.1rem; }
 
         .nav {
             display: flex;
-            gap: 24px;
+            gap: 32px;
+            align-items: center;
         }
 
         .nav-link {
-            color: var(--primary-foreground);
             text-decoration: none;
-            font-size: 14px;
+            color: white;
+            font-size: 15px;
             font-weight: 500;
-            opacity: 0.7;
-            transition: opacity 0.2s, border-color 0.2s;
-            padding: 8px 0;
-            border-bottom: 2px solid transparent;
+            opacity: 0.8;
+            transition: 0.3s;
         }
 
         .nav-link:hover, .nav-link.active {
             opacity: 1;
-            border-color: var(--warning);
+            color: var(--accent);
         }
 
-        /* Hero Section */
-        .page-header {
-            background-color: var(--primary);
-            padding: 80px 0;
-            color: var(--primary-foreground);
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 28px;
+            z-index: 1001;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: var(--muted);
+            padding: 80px 0 60px;
+            border-bottom: 1px solid var(--border);
             text-align: center;
         }
 
-        .page-title {
-            font-size: clamp(32px, 5vw, 40px);
-            font-weight: 800;
-            margin-bottom: 16px;
+        .badge {
+            background: rgba(192, 142, 65, 0.1);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 20px;
         }
 
-        .page-desc {
-            font-size: 18px;
-            opacity: 0.8;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.6;
+        .hero h1 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 42px;
+            color: var(--primary);
+            margin-bottom: 15px;
         }
 
-        /* Main Content */
-        .page-layout {
-            padding: 80px 0;
+        /* --- CONTENT SECTION --- */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 40px;
+            margin-top: -40px; /* Overlay hero */
+            padding-bottom: 80px;
         }
 
-        .content-area {
+        .card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .sidebar {
             display: flex;
             flex-direction: column;
-            gap: 100px;
-        }
-
-        .section-title-left {
-            font-size: 30px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 24px;
-            position: relative;
-            padding-bottom: 16px;
-        }
-
-        .section-title-left::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--warning);
-        }
-
-        .section-desc-left {
-            font-size: 17px;
-            line-height: 1.8;
-            color: var(--foreground);
-            margin-bottom: 40px;
-            max-width: 800px;
-        }
-
-        /* Tentang Program Cards */
-        .tentang-cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
         }
 
-        .tentang-card {
-            background-color: var(--muted);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
+        .sidebar-card {
+            background: var(--primary);
+            color: white;
             padding: 32px;
-            transition: transform 0.2s;
+            border-radius: var(--radius);
         }
 
-        .tentang-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .tentang-card-icon {
-            margin-bottom: 20px;
-            color: var(--warning);
-        }
-
-        .tentang-card-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .tentang-card-desc {
-            font-size: 15px;
-            color: var(--muted-foreground);
-            line-height: 1.6;
-        }
-
-        /* 11 Strategic Output Grid */
-        .strategic-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .strategic-card {
-            background-color: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 32px 24px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .strategic-card:hover {
-            border-color: var(--warning);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        .strategic-number {
-            position: absolute;
-            top: 20px;
-            right: 24px;
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--warning);
-            opacity: 0.15;
-        }
-
-        .strategic-icon {
-            width: 56px;
-            height: 56px;
-            background-color: rgba(13, 50, 68, 0.05);
-            border-radius: var(--radius-md);
+        .section-title {
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 12px;
             margin-bottom: 20px;
             color: var(--primary);
+            font-size: 22px;
         }
 
-        .strategic-title {
-            font-size: 17px;
+        .btn-action {
+            display: block;
+            background: var(--accent);
+            color: white;
+            text-align: center;
+            padding: 16px;
+            border-radius: 8px;
+            text-decoration: none;
             font-weight: 700;
-            margin-bottom: 12px;
-            line-height: 1.4;
+            transition: 0.3s;
         }
 
-        .strategic-desc {
-            font-size: 14px;
-            color: var(--muted-foreground);
-            line-height: 1.6;
+        .btn-action:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
         }
 
-        /* Info Grid */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 32px;
-        }
-
-        .info-card {
-            background-color: var(--muted);
-            border-radius: var(--radius-xl);
-            padding: 40px;
-            border: 1px solid var(--border);
-        }
-
-        .info-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .info-title iconify-icon {
-            color: var(--warning);
-        }
-
-        .info-desc {
-            font-size: 16px;
-            line-height: 1.8;
-        }
-
-        /* Footer */
+        /* --- FOOTER --- */
         .footer {
             background-color: var(--primary);
-            color: var(--primary-foreground);
-            padding: 80px 0 0 0;
-            margin-top: 100px;
+            color: white;
+            padding: 80px 0 40px;
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
             gap: 60px;
-            margin-bottom: 60px;
-        }
-
-        .footer-desc {
-            font-size: 15px;
-            line-height: 1.7;
-            opacity: 0.7;
-            margin-top: 24px;
-            max-width: 350px;
+            margin-bottom: 40px;
         }
 
         .footer-title {
+            color: var(--accent);
+            margin-bottom: 24px;
             font-size: 18px;
             font-weight: 700;
-            margin-bottom: 30px;
-            color: var(--warning);
         }
 
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 16px;
-        }
-
-        .footer-links a {
-            color: var(--primary-foreground);
-            text-decoration: none;
-            opacity: 0.7;
-            transition: opacity 0.2s;
-        }
-
-        .footer-links a:hover {
-            opacity: 1;
-        }
-
-        .footer-contact {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .contact-item {
-            display: flex;
-            gap: 12px;
-            font-size: 14px;
-            opacity: 0.7;
-        }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: white; opacity: 0.7; text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { opacity: 1; color: var(--accent); }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 30px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
             text-align: center;
             font-size: 14px;
-            opacity: 0.5;
+            opacity: 0.6;
         }
 
-        /* Responsive */
+        /* --- MOBILE RESPONSIVE --- */
         @media (max-width: 992px) {
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
+            .main-layout {
+                grid-template-columns: 1fr;
+                margin-top: 20px;
             }
-            .footer-info {
-                grid-column: span 2;
-            }
+            .hero h1 { font-size: 32px; }
         }
 
         @media (max-width: 768px) {
+            .hamburger { display: block; }
             .nav {
-                display: none; /* Mobile menu can be added later */
-            }
-            .header-content {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background: var(--primary);
+                flex-direction: column;
                 justify-content: center;
+                gap: 40px;
+                transition: 0.5s;
+                box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+                z-index: 1000;
             }
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer-info {
-                grid-column: span 1;
-            }
+            .nav.mobile-active { left: 0; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .logo span { font-size: 1rem; }
         }
     </style>
 </head>
@@ -411,15 +257,17 @@
 
     <header class="header">
         <div class="container header-content">
-            <a href="#" class="logo">
-                <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2F0f03f4c4-c2c7-45c6-bcfe-0e1e056b9603?alt=media&amp;token=ff699f1f-0c0e-4bc9-9afe-43a410f70e6a" alt="Logo" class="logo-img">
-                <div class="logo-text">
-                    <span class="logo-title">Kementerian Transmigrasi RI</span>
-                    <span class="logo-subtitle">Republik Indonesia</span>
-                </div>
+            <a href="index.html" class="logo">
+                <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2F9dfe8fc4-533c-43e4-ad2d-5b735792cafb?alt=media&token=eea5f1ac-f4f6-4f33-927e-18950b2eec09" alt="Logo">
+                <span>Kementerian Transmigrasi</span>
             </a>
-            <nav class="nav">
-                <a href="index.html" class="nav-link">Home</a>
+
+            <button class="hamburger" id="hamburger-menu">
+                <iconify-icon icon="lucide:menu"></iconify-icon>
+            </button>
+
+            <nav class="nav" id="main-nav">
+                <a href="index.html" class="nav-link">Beranda</a>
                 <a href="profil.html" class="nav-link">Profil</a>
                 <a href="regulasi.html" class="nav-link">Regulasi</a>
                 <a href="programdetail.html" class="nav-link active">Program</a>
@@ -428,136 +276,55 @@
         </div>
     </header>
 
-    <div class="page-header">
-        <div class="container">
-            <h1 class="page-title">Detail Program Strategis</h1>
-            <p class="page-desc">Rincian komprehensif terkait pelaksanaan dan target Tim Ekspedisi Patriot 2026 berdasarkan dokumen teknis Kementerian.</p>
-        </div>
-    </div>
-
-    <main class="container page-layout">
-        <div class="content-area">
-            
-            <section id="tentang">
-                <h2 class="section-title-left">Tentang Transmigrasi Patriot</h2>
-                <p class="section-desc-left">
-                    Transmigrasi Patriot adalah program unggulan kementerian yang berfokus menciptakan SDM unggul (Knowledge Spillover) guna mengatasi ketimpangan pembangunan dan memperkuat kemandirian ekonomi di kawasan transmigrasi, selaras dengan Renstra 2025-2029.
+    <main>
+        <section class="hero">
+            <div class="container">
+                <span class="badge">Program Unggulan Nasional</span>
+                <h1>Transmigrasi Patriot</h1>
+                <p style="color: var(--muted-foreground); max-width: 700px; margin: 0 auto; font-size: 18px;">
+                    Membangun kemandirian kawasan melalui skema Knowledge Spillover dan pemberdayaan SDM unggul di wilayah prioritas.
                 </p>
-                <div class="tentang-cards-grid">
-                    <div class="tentang-card">
-                        <div class="tentang-card-icon">
-                            <iconify-icon icon="lucide:brain-circuit" width="32"></iconify-icon>
-                        </div>
-                        <h3 class="tentang-card-title">Knowledge Spillover</h3>
-                        <p class="tentang-card-desc">Menciptakan ekosistem transfer pengetahuan untuk peningkatan kapasitas SDM lokal.</p>
-                    </div>
-                    <div class="tentang-card">
-                        <div class="tentang-card-icon">
-                            <iconify-icon icon="lucide:scale" width="32"></iconify-icon>
-                        </div>
-                        <h3 class="tentang-card-title">Mengatasi Ketimpangan</h3>
-                        <p class="tentang-card-desc">Pemerataan ekonomi dan pembangunan infrastruktur terpadu yang menyeluruh.</p>
-                    </div>
-                </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="output">
-                <h2 class="section-title-left">11 Output Strategis TEP 2026</h2>
-                <p class="section-desc-left">Beragam fokus utama yang dirancang secara strategis untuk memberikan dampak nyata bagi keberlanjutan dan kemandirian kawasan transmigrasi di Nusantara.</p>
-                
-                <div class="strategic-grid">
-                    <div class="strategic-card">
-                        <span class="strategic-number">01</span>
-                        <div class="strategic-icon"><iconify-icon icon="lucide:map" width="24"></iconify-icon></div>
-                        <h3 class="strategic-title">Updating Data & Peta Tematik</h3>
-                        <p class="strategic-desc">Pemutakhiran informasi spasial kawasan untuk pengambilan keputusan yang presisi.</p>
-                    </div>
-                    <div class="strategic-card">
-                        <span class="strategic-number">02</span>
-                        <div class="strategic-icon"><iconify-icon icon="lucide:wheat" width="24"></iconify-icon></div>
-                        <h3 class="strategic-title">Komoditas Unggulan</h3>
-                        <p class="strategic-desc">Identifikasi potensi ekonomi lokal yang kompetitif guna meningkatkan daya saing wilayah.</p>
-                    </div>
-                    <div class="strategic-card">
-                        <span class="strategic-number">03</span>
-                        <div class="strategic-icon"><iconify-icon icon="lucide:users" width="24"></iconify-icon></div>
-                        <h3 class="strategic-title">Kelembagaan Kolaboratif</h3>
-                        <p class="strategic-desc">Desain kerja sama multipihak di kawasan transmigrasi demi sinergi berkelanjutan.</p>
-                    </div>
-                    <div class="strategic-card">
-                        <span class="strategic-number">04</span>
-                        <div class="strategic-icon"><iconify-icon icon="lucide:shield-check" width="24"></iconify-icon></div>
-                        <h3 class="strategic-title">Mitigasi Konflik</h3>
-                        <p class="strategic-desc">Sistem penanganan dan pencegahan konflik sosial untuk memelihara harmonisasi.</p>
-                    </div>
-                    <div class="strategic-card">
-                        <span class="strategic-number">05</span>
-                        <div class="strategic-icon"><iconify-icon icon="lucide:building-2" width="24"></iconify-icon></div>
-                        <h3 class="strategic-title">Infrastruktur & Layanan Dasar</h3>
-                        <p class="strategic-desc">Desain kebijakan teknis yang menjamin pemenuhan kebutuhan dasar masyarakat.</p>
-                    </div>
-                    <div class="strategic-card">
-                        <span class="strategic-number">06</span>
-                        <div class="strategic-icon"><iconify-icon icon="lucide:lightbulb" width="24"></iconify-icon></div>
-                        <h3 class="strategic-title">Teknologi Tepat Guna</h3>
-                        <p class="strategic-desc">Penerapan inovasi ilmu pengetahuan dan teknologi untuk meningkatkan produktivitas.</p>
-                    </div>
-                    <div class="strategic-card">
-                        <span class="strategic-number">07</span>
-                        <div class="strategic-icon"><iconify-icon icon="lucide:anchor" width="24"></iconify-icon></div>
-                        <h3 class="strategic-title">Kajian Sembulang</h3>
-                        <p class="strategic-desc">Analisis komprehensif mengenai potensi wilayah sebagai pelabuhan transit strategis.</p>
-                    </div>
-                    <div class="strategic-card">
-                        <span class="strategic-number">08</span>
-                        <div class="strategic-icon"><iconify-icon icon="lucide:tent" width="24"></iconify-icon></div>
-                        <h3 class="strategic-title">Kampung Wisata Adat</h3>
-                        <p class="strategic-desc">Desain pengembangan sektor pariwisata terpadu yang berbasis pemberdayaan masyarakat.</p>
-                    </div>
-                    <div class="strategic-card">
-                        <span class="strategic-number">09</span>
-                        <div class="strategic-icon"><iconify-icon icon="lucide:ship" width="24"></iconify-icon></div>
-                        <h3 class="strategic-title">Hub Maritim</h3>
-                        <p class="strategic-desc">Pembangunan konektivitas transportasi laut untuk kelancaran logistik antar pulau.</p>
-                    </div>
-                    <div class="strategic-card">
-                        <span class="strategic-number">10</span>
-                        <div class="strategic-icon"><iconify-icon icon="lucide:fish" width="24"></iconify-icon></div>
-                        <h3 class="strategic-title">Budidaya Laut</h3>
-                        <p class="strategic-desc">Pengembangan potensi ekologis secara maksimal melalui akuakultur oleh rakyat.</p>
-                    </div>
-                    <div class="strategic-card">
-                        <span class="strategic-number">11</span>
-                        <div class="strategic-icon"><iconify-icon icon="lucide:factory" width="24"></iconify-icon></div>
-                        <h3 class="strategic-title">Korporasi Maritim</h3>
-                        <p class="strategic-desc">Strategi hilirisasi hasil laut yang diintegrasikan melalui badan korporasi masyarakat.</p>
-                    </div>
-                </div>
-            </section>
+        <div class="container main-layout">
+            <div class="card">
+                <h2 class="section-title">
+                    <iconify-icon icon="lucide:book-open" style="color: var(--accent)"></iconify-icon>
+                    Latar Belakang Program
+                </h2>
+                <p style="margin-bottom: 24px; color: #4b5563;">
+                    Berdasarkan Rencana Strategis (Renstra) 2025-2029, Transmigrasi Patriot hadir sebagai katalisator untuk mengatasi ketimpangan ekonomi dan sosial. Program ini bukan sekadar perpindahan penduduk, melainkan mobilisasi tenaga ahli muda ke daerah untuk mentransfer ilmu pengetahuan secara langsung kepada masyarakat lokal.
+                </p>
 
-            <section id="lokus">
-                <h2 class="section-title-left">Informasi Tambahan</h2>
-                <div class="info-grid">
-                    <div class="info-card">
-                        <h3 class="info-title">
-                            <iconify-icon icon="lucide:target" width="24"></iconify-icon>
-                            Lokus Prioritas & Target
-                        </h3>
-                        <p class="info-desc">
-                            Fokus utama penempatan Tim Ekspedisi Patriot mencakup kawasan strategis seperti <strong>Rempang</strong>, <strong>Mamuju</strong>, dan <strong>Merauke</strong>. Target kontribusi tenaga ahli profesional diproyeksikan meningkat dari 6% pada tahun 2025 hingga mencapai 7,29% di akhir periode tahun 2029.
-                        </p>
-                    </div>
-                    <div class="info-card">
-                        <h3 class="info-title">
-                            <iconify-icon icon="lucide:clipboard-list" width="24"></iconify-icon>
-                            Karakteristik Program
-                        </h3>
-                        <p class="info-desc">
-                            Penyelenggaraan Trans Patriot memiliki karakteristik multidimensi yang secara komprehensif meliputi aspek metode operasional, manajemen waktu yang efisien, penyesuaian tempat, serta manajemen risiko yang ketat sesuai dengan <strong>Pasal 3 Permentrans No. 3/2026</strong>.
-                        </p>
-                    </div>
+                <h3 class="section-title">
+                    <iconify-icon icon="lucide:check-circle" style="color: var(--accent)"></iconify-icon>
+                    Fokus Utama
+                </h3>
+                <ul style="list-style-position: inside; color: #4b5563; line-height: 2.2; margin-bottom: 24px;">
+                    <li><strong>Digitalisasi:</strong> Membangun infrastruktur literasi digital di kawasan transmigrasi.</li>
+                    <li><strong>Agrobisnis:</strong> Modernisasi pertanian dengan teknologi tepat guna.</li>
+                    <li><strong>Pendidikan:</strong> Meningkatkan kualitas pendidikan non-formal bagi warga lokal.</li>
+                </ul>
+            </div>
+
+            <aside class="sidebar">
+                <div class="sidebar-card">
+                    <h4 style="color: var(--accent); margin-bottom: 12px; font-size: 20px;">Daftar Patriot</h4>
+                    <p style="font-size: 14px; opacity: 0.9; margin-bottom: 24px;">
+                        Apakah Anda pemuda berbakat yang siap membangun Indonesia dari pinggiran? Daftar untuk angkatan 2026 sekarang.
+                    </p>
+                    <a href="formregistrasi.html" class="btn-action">IKUTI PROGRAM</a>
                 </div>
-            </section>
+
+                <div class="card" style="padding: 24px;">
+                    <h4 style="margin-bottom: 16px; font-size: 16px;">Unduh Informasi</h4>
+                    <a href="regulasi.html" style="display: flex; align-items: center; gap: 10px; color: var(--primary); text-decoration: none; font-size: 14px; font-weight: 600;">
+                        <iconify-icon icon="lucide:file-text" style="font-size: 20px;"></iconify-icon>
+                        Panduan Teknis (PDF)
+                    </a>
+                </div>
+            </aside>
         </div>
     </main>
 
@@ -566,7 +333,7 @@
             <div class="footer-grid">
                 <div class="footer-info">
                     <a href="#" class="logo" style="margin-bottom: 10px; display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2F0f03f4c4-c2c7-45c6-bcfe-0e1e056b9603?alt=media&token=ff699f1f-0c0e-4bc9-9afe-43a410f70e6a" alt="Logo" class="logo-img" style="width: 45px; height: 45px; border-radius: 50%;">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2Fe4555ffb-ad55-4a94-acb9-eab45e534938?alt=media&token=3a10a3ef-6f3a-40f0-a6bb-d8ac3e6fa465" alt="Logo" class="logo-img" style="width: 45px; height: 45px; border-radius: 50%;">
                         <div>
                             <span class="logo-title" style="font-size: 18px; font-weight: 700; display: block; text-transform: uppercase;">Kementerian Transmigrasi RI</span>
                             <span class="logo-subtitle" style="font-size: 12px; opacity: 0.8; display: block;">Republik Indonesia</span>
@@ -577,34 +344,63 @@
                 <div class="footer-links">
                     <h4 class="footer-title">Tautan Cepat</h4>
                     <ul>
-                        <li><a href="#profil">Profil Program</a></li>
-                        <li><a href="#program">Fokus Utama</a></li>
-                        <li><a href="#regulasi">Dokumen Regulasi</a></li>
-                        <li><a href="#">Pendaftaran Patriot</a></li>
+                        <li><a href="profil.html">Profil Program</a></li>
+                        <li><a href="programdetail.html">Fokus Utama</a></li>
+                        <li><a href="regulasi.html">Dokumen Regulasi</a></li>
+                        <li><a href="formregistrasi.html">Pendaftaran Patriot</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h4 class="footer-title">Pusat Kontak</h4>
                     <div class="contact-item">
-                        <iconify-icon icon="lucide:map-pin" width="18"></iconify-icon>
-                        <span>Jl. TMP. Kalibata No.17, Jakarta Selatan 12750</span>
+                        <iconify-icon icon="lucide:map-pin"></iconify-icon>
+                        <span>Jl. TMP. Kalibata No.17, Jakarta Selatan</span>
                     </div>
                     <div class="contact-item">
-                        <iconify-icon icon="lucide:phone" width="18"></iconify-icon>
+                        <iconify-icon icon="lucide:phone"></iconify-icon>
                         <span>(021) 7999999</span>
                     </div>
                     <div class="contact-item">
-                        <iconify-icon icon="lucide:mail" width="18"></iconify-icon>
+                        <iconify-icon icon="lucide:mail"></iconify-icon>
                         <span>info@transmigrasi.go.id</span>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Kementerian Transmigrasi Republik Indonesia. Hak Cipta Dilindungi Undang-Undang.</p>
+                <p>© 2026 Kementerian Transmigrasi Republik Indonesia. Hak Cipta Dilindungi Undang-Undang.</p>
             </div>
         </div>
     </footer>
 
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </body>
+<script>
+// Hamburger menu toggle
+const hamburger = document.getElementById('hamburger-menu');
+const nav = document.getElementById('main-nav');
+
+if (hamburger && nav) {
+    hamburger.addEventListener('click', function() {
+        nav.classList.toggle('mobile-active');
+    });
+
+    // Tutup menu saat klik link navigasi (mobile)
+    nav.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                nav.classList.remove('mobile-active');
+            }
+        });
+    });
+
+    // Tutup menu saat klik di luar nav/hamburger
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+            if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+                nav.classList.remove('mobile-active');
+            }
+        }
+    });
+}
+</script>
 </html>

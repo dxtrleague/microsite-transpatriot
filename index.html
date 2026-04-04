@@ -24,6 +24,103 @@
       --font-family-body: 'Inter', sans-serif;
     }
 
+    /* Responsive Styles */
+    @media (max-width: 900px) {
+      .container {
+        padding: 0 12px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .section-header-center {
+        margin-bottom: 32px;
+      }
+      .card-grid {
+        gap: 16px;
+      }
+    }
+    @media (max-width: 700px) {
+      .header {
+        height: 56px;
+      }
+      .header-content {
+        padding: 0 12px;
+      }
+      .logo-title {
+        font-size: 13px;
+      }
+      .logo-subtitle {
+        font-size: 10px;
+      }
+      .nav {
+        display: none;
+      }
+      .nav.mobile-active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        width: 100vw;
+        background: var(--primary);
+        gap: 0;
+        z-index: 100;
+      }
+      .nav-link {
+        padding: 16px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        font-size: 16px;
+      }
+      .section {
+        padding: 40px 0;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer {
+        padding: 32px 0 10px 0;
+      }
+      .footer-bottom {
+        padding-top: 10px;
+      }
+    }
+    @media (max-width: 480px) {
+      .section-title {
+        font-size: 22px;
+      }
+      .card h3 {
+        font-size: 18px;
+      }
+      .container {
+        padding: 0 6px;
+      }
+    }
+
+    /* Hamburger menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      z-index: 101;
+    }
+    .hamburger span {
+      height: 4px;
+      width: 100%;
+      background: var(--primary-foreground);
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+    @media (max-width: 700px) {
+      .hamburger {
+        display: flex;
+      }
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -166,7 +263,12 @@
           <span class="logo-subtitle">Republik Indonesia</span>
         </div>
       </a>
-      <nav class="nav">
+      <div class="hamburger" id="hamburger-menu" aria-label="Buka menu navigasi" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav class="nav" id="main-nav">
         <a href="index.html" class="nav-link active">Home</a>
         <a href="profil.html" class="nav-link">Profil</a>
         <a href="regulasi.html" class="nav-link">Regulasi</a>
@@ -202,84 +304,79 @@
   </div>
 
   <main>
-    <section class="section" id="profil">
-      <div class="container section-grid">
-        <div>
-          <h2 class="section-title">Profil Program</h2>
-          <p>Program Transmigrasi Patriot bertujuan untuk mempercepat pembangunan daerah, khususnya di kawasan perbatasan dan maritim. Melalui pendekatan inovatif dan kolaboratif, kami mengirimkan putra-putri terbaik bangsa untuk menjadi katalisator perubahan di desa-desa transmigrasi.</p>
-          <ul class="feature-list">
-            <li><iconify-icon icon="lucide:check-circle-2" style="color:var(--primary)"></iconify-icon> Pemberdayaan Ekonomi Lokal & Kewirausahaan</li>
-            <li><iconify-icon icon="lucide:check-circle-2" style="color:var(--primary)"></iconify-icon> Pengembangan Infrastruktur Dasar</li>
-            <li><iconify-icon icon="lucide:check-circle-2" style="color:var(--primary)"></iconify-icon> Peningkatan Kualitas Pendidikan dan Kesehatan</li>
-          </ul>
-        </div>
-        <img src="https://storage.googleapis.com/banani-generated-images/generated-images/15521b10-ab63-40a5-aaed-08a638c052f9.jpg" alt="Kegiatan" style="width:100%; border-radius: var(--radius-lg);">
-      </div>
-    </section>
-
-    <section class="section bg-muted" id="program">
-      <div class="container">
-        <div style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
-          <h2 class="section-title">Inisiatif & Fokus Utama</h2>
-          <p>Beragam program dirancang secara strategis untuk memberikan dampak nyata dan terukur bagi keberlanjutan kawasan transmigrasi.</p>
-        </div>
-        <div class="card-grid">
-          <div class="card">
-            <div class="card-icon"><iconify-icon icon="lucide:tractor"></iconify-icon></div>
-            <h3>Ketahanan Pangan</h3>
-            <p>Pengenalan teknologi pertanian modern untuk meningkatkan hasil panen dan pendapatan para transmigran.</p>
-          </div>
-          <div class="card">
-            <div class="card-icon"><iconify-icon icon="lucide:anchor"></iconify-icon></div>
-            <h3>Kawasan Maritim</h3>
-            <p>Pemberdayaan kelompok nelayan tangguh dan pengembangan potensi wisata pesisir di area transmigrasi.</p>
-          </div>
-          <div class="card">
-            <div class="card-icon"><iconify-icon icon="lucide:graduation-cap"></iconify-icon></div>
-            <h3>Pendidikan Karakter</h3>
-            <p>Pengiriman tenaga pendidik sukarela ke wilayah terpencil untuk memastikan pendidikan dasar yang berkualitas.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer" id="kontak">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <a href="#" class="logo" style="margin-bottom: 10px; display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
-            <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2F9dfe8fc4-533c-43e4-ad2d-5b735792cafb?alt=media&token=eea5f1ac-f4f6-4f33-927e-18950b2eec09" alt="Logo" class="logo-img" style="width: 45px; height: 45px; border-radius: 50%;">
-            <div>
-              <span class="logo-title" style="font-size: 18px; font-weight: 700; display: block; text-transform: uppercase;">Kementerian Transmigrasi RI</span>
-              <span class="logo-subtitle" style="font-size: 12px; opacity: 0.8; display: block;">Republik Indonesia</span>
+    <footer class="footer" id="kontak">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <a href="#" class="logo" style="margin-bottom: 10px; display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2Fe4555ffb-ad55-4a94-acb9-eab45e534938?alt=media&token=3a10a3ef-6f3a-40f0-a6bb-d8ac3e6fa465" alt="Logo" class="logo-img" style="width: 45px; height: 45px; border-radius: 50%;">
+                        <div>
+                            <span class="logo-title" style="font-size: 18px; font-weight: 700; display: block; text-transform: uppercase;">Kementerian Transmigrasi RI</span>
+                            <span class="logo-subtitle" style="font-size: 12px; opacity: 0.8; display: block;">Republik Indonesia</span>
+                        </div>
+                    </a>
+                    <p class="footer-desc">Berkomitmen penuh untuk memajukan kesejahteraan masyarakat melalui pembangunan kawasan transmigrasi yang berkelanjutan, inklusif, dan mandiri.</p>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-title">Tautan Cepat</h4>
+                    <ul>
+                        <li><a href="profil.html">Profil Program</a></li>
+                        <li><a href="programdetail.html">Fokus Utama</a></li>
+                        <li><a href="regulasi.html">Dokumen Regulasi</a></li>
+                        <li><a href="formregistrasi.html">Pendaftaran Patriot</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4 class="footer-title">Pusat Kontak</h4>
+                    <div class="contact-item">
+                        <iconify-icon icon="lucide:map-pin"></iconify-icon>
+                        <span>Jl. TMP. Kalibata No.17, Jakarta Selatan</span>
+                    </div>
+                    <div class="contact-item">
+                        <iconify-icon icon="lucide:phone"></iconify-icon>
+                        <span>(021) 7999999</span>
+                    </div>
+                    <div class="contact-item">
+                        <iconify-icon icon="lucide:mail"></iconify-icon>
+                        <span>info@transmigrasi.go.id</span>
+                    </div>
+                </div>
             </div>
-          </a>
-          <p style="opacity: 0.8; font-size: 14px;">Berkomitmen penuh untuk memajukan kesejahteraan masyarakat melalui pembangunan kawasan transmigrasi yang berkelanjutan, inklusif, dan mandiri.</p>
+            <div class="footer-bottom">
+                <p>© 2026 Kementerian Transmigrasi Republik Indonesia. Hak Cipta Dilindungi Undang-Undang.</p>
+            </div>
         </div>
-        <div>
-          <h4 class="footer-title">Tautan Cepat</h4>
-          <ul class="footer-links">
-            <li><a href="#profil">Profil Program</a></li>
-            <li><a href="#program">Fokus Utama</a></li>
-            <li><a href="#regulasi">Dokumen Regulasi</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="footer-title">Pusat Kontak</h4>
-          <p style="font-size: 14px; opacity: 0.8;">
-            Jl. TMP. Kalibata No.17, Jakarta Selatan 12750<br>
-            (021) 7999999<br>
-            info@transmigrasi.go.id
-          </p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2026 Kementerian Transmigrasi Republik Indonesia. Hak Cipta Dilindungi Undang-Undang.</p>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-  <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </body>
+<script>
+// Hamburger menu toggle
+const hamburger = document.getElementById('hamburger-menu');
+const nav = document.getElementById('main-nav');
+
+if (hamburger && nav) {
+    hamburger.addEventListener('click', function() {
+        nav.classList.toggle('mobile-active');
+    });
+
+    // Tutup menu saat klik link navigasi (mobile)
+    nav.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                nav.classList.remove('mobile-active');
+            }
+        });
+    });
+
+    // Tutup menu saat klik di luar nav/hamburger
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+            if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+                nav.classList.remove('mobile-active');
+            }
+        }
+    });
+}
+</script>
 </html>

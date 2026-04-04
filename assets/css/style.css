@@ -1,3 +1,98 @@
+@media (max-width: 900px), (max-width: 768px) {
+    .nav.mobile-active {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        width: 100vw;
+        background: var(--primary);
+        gap: 0;
+        z-index: 100;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+}
+/* Responsive Navigation & Hamburger */
+@media (max-width: 900px) {
+    .container {
+        padding: 0 12px;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+@media (max-width: 700px) {
+    .header {
+        height: 56px;
+    }
+    .header-content {
+        padding: 0 12px;
+    }
+    .logo-title {
+        font-size: 13px;
+    }
+    .logo-subtitle {
+        font-size: 10px;
+    }
+    .nav {
+        display: none !important;
+    }
+    .nav.mobile-active {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        width: 100vw;
+        background: var(--primary);
+        gap: 0;
+        z-index: 100;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    .nav-link {
+        padding: 16px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        font-size: 16px;
+        width: 100%;
+        text-align: left;
+    }
+    .footer {
+        padding: 32px 0 10px 0;
+    }
+    .footer-bottom {
+        padding-top: 10px;
+    }
+}
+@media (max-width: 480px) {
+    .container {
+        padding: 0 6px;
+    }
+}
+
+/* Hamburger menu style */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    z-index: 101;
+}
+.hamburger span {
+    height: 4px;
+    width: 100%;
+    background: var(--primary-foreground);
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+@media (max-width: 700px) {
+    .hamburger {
+        display: flex;
+    }
+}
 
 body {
     font-family: 'DM Sans', Arial, sans-serif;
