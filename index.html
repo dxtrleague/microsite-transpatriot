@@ -273,10 +273,17 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(rgba(11, 37, 69, 0.7), rgba(11, 37, 69, 0.7)),
-        url('https://storage.googleapis.com/banani-generated-images/generated-images/43e21db7-3df4-4b86-9eaa-528d276c87ee.jpg');
-      background-size: cover;
+      background: linear-gradient(rgba(11, 37, 69, 0.3), rgba(11, 37, 69, 0.3)),
+        
+url('assets/img/BERGABUNGLAH MENJADI.png');
+      background-size: contain;
       background-position: center;
+      background-repeat: no-repeat;
+      /* Tambahkan ini untuk ketajaman visual */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;                 /* Opsi terakhir jika masih blur */
+    
       z-index: -1;
     }
 
@@ -541,7 +548,7 @@
 
   <header class="header">
     <div class="container header-content">
-      <a href="#" class="logo">
+      <a href="index.html" class="logo">
         <img
           src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2F9dfe8fc4-533c-43e4-ad2d-5b735792cafb?alt=media&token=eea5f1ac-f4f6-4f33-927e-18950b2eec09"
           alt="Logo" class="logo-img">
