@@ -30,9 +30,8 @@
         }
         
         body {
-    font-family: var(--font-family);
-    font-size: 16px;
-            
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
             background-color: var(--background);
             color: var(--foreground);
             line-height: 1.6;
@@ -128,7 +127,6 @@
         }
 
         .hero h1 {
-            font-family: 'Inter', sans-serif;
             font-size: 48px;
             color: var(--primary);
             margin-bottom: 15px;
@@ -139,7 +137,7 @@
             display: grid;
             grid-template-columns: 1fr 380px;
             gap: 40px;
-            margin-top: -40px; /* Overlay hero */
+            margin-top: -40px;
             padding-bottom: 80px;
         }
 
@@ -190,6 +188,21 @@
             transform: translateY(-2px);
         }
 
+        /* Tombol Unduh Khusus */
+        .btn-download-sidebar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .btn-download-sidebar:hover {
+            color: var(--accent);
+        }
+
         /* --- FOOTER --- */
         .footer {
             background-color: var(--primary);
@@ -230,7 +243,6 @@
                 grid-template-columns: 1fr;
                 margin-top: 20px;
             }
-            .hero h1 { font-size: 48px; }
         }
 
         @media (max-width: 768px) {
@@ -252,33 +264,7 @@
             .nav.mobile-active { left: 0; }
             .footer-grid { grid-template-columns: 1fr; gap: 40px; }
             .logo span { font-size: 16px; }
-        }
-    </style>
-
-    <!-- STANDARDIZASI FONT GLOBAL -->
-    <style id="global-typography">
-        body, p, a, span, div, input, button, select, textarea {
-            font-family: 'Inter', sans-serif !important;
-        }
-        body { font-size: 16px !important; }
-        
-        /* Typography Scale */
-        .logo-title { font-size: 20px !important; }
-        .logo-subtitle { font-size: 14px !important; }
-        .nav-link { font-size: 16px !important; }
-        
-        .hero-title, .hero h1 { font-size: 48px !important; }
-        .section-title, .contact-title { font-size: 32px !important; }
-        .card-title, .fokus-card h3, .feature-title, .stat-value, .doc-title, .profil-list strong { font-size: 20px !important; }
-        
-        .hero-desc, .section-desc, p { font-size: 16px !important; }
-        .footer-title, h4 { font-size: 18px !important; }
-        .footer-bottom, .footer-links a, .hero-badge { font-size: 14px !important; }
-        
-        /* Mobile Scaling */
-        @media (max-width: 768px) {
-            .hero-title, .hero h1 { font-size: 32px !important; }
-            .section-title, .contact-title { font-size: 24px !important; }
+            .hero h1 { font-size: 32px !important; }
         }
     </style>
 </head>
@@ -348,7 +334,7 @@
 
                 <div class="card" style="padding: 24px;">
                     <h4 style="margin-bottom: 16px; font-size: 18px;">Unduh Informasi</h4>
-                    <a href="regulasi.html" style="display: flex; align-items: center; gap: 10px; color: var(--primary); text-decoration: none; font-size: 14px; font-weight: 600;">
+                    <a href="#" class="btn-download-sidebar btn-coming-soon">
                         <iconify-icon icon="lucide:file-text" style="font-size: 24px;"></iconify-icon>
                         Panduan Teknis (PDF)
                     </a>
@@ -381,15 +367,15 @@
                 </div>
                 <div class="footer-contact">
                     <h4 class="footer-title">Pusat Kontak</h4>
-                    <div class="contact-item">
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
                         <iconify-icon icon="lucide:map-pin"></iconify-icon>
                         <span>Jl. TMP. Kalibata No.17, Jakarta Selatan</span>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
                         <iconify-icon icon="lucide:phone"></iconify-icon>
                         <span>(021) 7999999</span>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 10px;">
                         <iconify-icon icon="lucide:mail"></iconify-icon>
                         <span>info@transmigrasi.go.id</span>
                     </div>
@@ -402,34 +388,38 @@
     </footer>
 
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-</body>
-<script>
-// Hamburger menu toggle
-const hamburger = document.getElementById('hamburger-menu');
-const nav = document.getElementById('main-nav');
 
-if (hamburger && nav) {
-    hamburger.addEventListener('click', function() {
-        nav.classList.toggle('mobile-active');
-    });
+    <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger-menu');
+    const nav = document.getElementById('main-nav');
 
-    // Tutup menu saat klik link navigasi (mobile)
-    nav.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function() {
-            if (window.innerWidth <= 768) {
-                nav.classList.remove('mobile-active');
-            }
+    if (hamburger && nav) {
+        hamburger.addEventListener('click', function() {
+            nav.classList.toggle('mobile-active');
+        });
+
+        // Tutup menu saat klik link navigasi (mobile)
+        nav.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    nav.classList.remove('mobile-active');
+                }
+            });
+        });
+    }
+
+    // POPUP COMING SOON
+    document.addEventListener('DOMContentLoaded', function() {
+        const comingSoonButtons = document.querySelectorAll('.btn-coming-soon');
+        
+        comingSoonButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert("🚀 Coming Soon!\nDokumen Panduan Teknis (PDF) sedang dalam tahap finalisasi dan akan segera tersedia untuk diunduh.");
+            });
         });
     });
-
-    // Tutup menu saat klik di luar nav/hamburger
-    document.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768) {
-            if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
-                nav.classList.remove('mobile-active');
-            }
-        }
-    });
-}
-</script>
+    </script>
+</body>
 </html>
