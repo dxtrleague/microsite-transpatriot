@@ -23,36 +23,35 @@
             --radius: 12px;
         }
 
-        * { 
-            box-sizing: border-box; 
+        /* --- RESET & GLOBAL FIX --- */
+        /* Hapus overflow-x: hidden dan height: auto !important dari body agar sticky/fixed bekerja normal */
+        html, body { 
             margin: 0; 
-            padding: 0; 
-        }
-        
-        body {
+            padding: 0;
             font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            background-color: var(--background);
-            color: var(--foreground);
-            line-height: 1.6;
-            overflow-x: hidden;
+            background-color: #ffffff;
+            scroll-behavior: smooth;
         }
+
+        * { box-sizing: border-box; }
 
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 20px;
         }
 
-        /* --- HEADER & NAVIGATION --- */
+        /* --- HEADER & NAVIGATION (FIXED) --- */
         .header {
             background-color: var(--primary);
             height: 80px;
             display: flex;
             align-items: center;
-            position: sticky;
+            position: fixed; /* Ganti ke fixed supaya nempel terus pas di scroll */
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
@@ -70,31 +69,22 @@
             gap: 12px;
             text-decoration: none;
             color: white;
-            z-index: 1001;
         }
 
         .logo img { height: 40px; border-radius: 50%; background: white; padding: 2px; }
-        .logo span { font-weight: 700; font-size: 20px; }
+        .logo-title { font-weight: 700; font-size: 14px; display: block; }
+        .logo-subtitle { font-size: 10px; opacity: 0.7; display: block; }
 
-        .nav {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-
+        .nav { display: flex; gap: 32px; align-items: center; }
         .nav-link {
             text-decoration: none;
             color: white;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 500;
             opacity: 0.8;
             transition: 0.3s;
         }
-
-        .nav-link:hover, .nav-link.active {
-            opacity: 1;
-            color: var(--accent);
-        }
+        .nav-link:hover, .nav-link.active { opacity: 1; color: var(--accent); }
 
         .hamburger {
             display: none;
@@ -102,14 +92,13 @@
             border: none;
             color: white;
             cursor: pointer;
-            font-size: 32px;
-            z-index: 1001;
+            font-size: 30px;
         }
 
         /* --- HERO SECTION --- */
         .hero {
             background: var(--muted);
-            padding: 80px 0 60px;
+            padding: 140px 0 60px; /* Padding top ditambah karena header sekarang fixed */
             border-bottom: 1px solid var(--border);
             text-align: center;
         }
@@ -119,15 +108,16 @@
             color: var(--accent);
             padding: 6px 16px;
             border-radius: 100px;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 700;
             letter-spacing: 1px;
             display: inline-block;
             margin-bottom: 20px;
+            text-transform: uppercase;
         }
 
         .hero h1 {
-            font-size: 48px;
+            font-size: 42px;
             color: var(--primary);
             margin-bottom: 15px;
             font-weight: 800;
@@ -136,9 +126,9 @@
         /* --- CONTENT SECTION --- */
         .main-layout {
             display: grid;
-            grid-template-columns: 1fr 380px;
+            grid-template-columns: 1fr 350px;
             gap: 40px;
-            margin-top: -40px;
+            margin-top: -30px;
             padding-bottom: 80px;
         }
 
@@ -146,20 +136,15 @@
             background: white;
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 40px;
+            padding: 35px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
 
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
+        .sidebar { display: flex; flex-direction: column; gap: 24px; }
         .sidebar-card {
             background: var(--primary);
             color: white;
-            padding: 32px;
+            padding: 30px;
             border-radius: var(--radius);
         }
 
@@ -169,7 +154,7 @@
             gap: 12px;
             margin-bottom: 20px;
             color: var(--primary);
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
         }
 
@@ -185,11 +170,6 @@
             transition: 0.3s;
         }
 
-        .btn-action:hover {
-            filter: brightness(1.1);
-            transform: translateY(-2px);
-        }
-
         .btn-download-sidebar {
             display: flex;
             align-items: center;
@@ -198,127 +178,111 @@
             text-decoration: none;
             font-size: 15px;
             font-weight: 600;
-            transition: color 0.3s;
             cursor: pointer;
         }
-        .btn-download-sidebar:hover {
-            color: var(--accent);
-        }
 
-        /* --- STYLES MODAL COMING SOON (SERAGAM) --- */
+        /* --- MODAL COMING SOON --- */
         #comingSoonModal {
             display: none;
             position: fixed;
             z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
             align-items: center;
             justify-content: center;
             backdrop-filter: blur(4px);
         }
-
         .modal-content {
             background: white;
             padding: 40px;
             border-radius: 16px;
-            max-width: 400px;
-            width: 90%;
+            max-width: 380px;
+            width: 85%;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        @keyframes modalPop {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .modal-icon {
-            width: 80px;
-            height: 80px;
-            background: #fff7ed;
-            color: #f97316;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            font-size: 40px;
-        }
-
-        .btn-modal-close {
-            width: 100%;
-            background: #0d3244;
-            color: #fff;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 20px;
-            transition: 0.2s;
         }
 
         /* --- FOOTER --- */
         .footer {
             background-color: var(--primary);
             color: white;
-            padding: 80px 0 40px;
+            padding: 70px 0 30px;
+            margin-top: 60px;
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 40px;
+            gap: 50px;
+        }
+
+        .footer-info, .footer-links, .footer-contact {
+            display: flex;
+            flex-direction: column;
         }
 
         .footer-title {
-            color: var(--accent);
-            margin-bottom: 24px;
-            font-size: 18px;
+            color: white;
+            margin-bottom: 20px;
+            font-size: 16px;
             font-weight: 700;
         }
 
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 12px; }
-        .footer-links a { color: white; opacity: 0.7; text-decoration: none; transition: 0.3s; }
-        .footer-links a:hover { opacity: 1; color: var(--accent); }
+        .footer-links-list { list-style: none; padding: 0; margin: 0; }
+        .footer-links-list li { margin-bottom: 12px; }
+        .footer-links-list a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; transition: 0.3s; }
+        .footer-links-list a:hover { color: var(--accent); }
+
+        .contact-item {
+            display: flex;
+            gap: 10px;
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
 
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 30px;
+            padding-top: 25px;
+            margin-top: 40px;
             text-align: center;
-            font-size: 14px;
-            opacity: 0.6;
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
         }
 
         /* --- MOBILE RESPONSIVE --- */
-        @media (max-width: 992px) {
-            .main-layout { grid-template-columns: 1fr; margin-top: 20px; }
-        }
-
         @media (max-width: 768px) {
+            .hero { padding-top: 120px; }
             .hamburger { display: block; }
             .nav {
-                position: fixed;
-                top: 0;
-                left: -100%;
-                width: 80%;
-                height: 100vh;
-                background: var(--primary);
-                flex-direction: column;
-                justify-content: center;
-                gap: 40px;
-                transition: 0.5s;
-                z-index: 1000;
+                display: none; 
+                position: fixed; 
+                top: 80px; 
+                left: 0; 
+                width: 100%;
+                flex-direction: column; 
+                background: var(--primary); 
+                z-index: 999; 
+                padding: 20px 0;
             }
-            .nav.mobile-active { left: 0; }
-            .hero h1 { font-size: 32px !important; }
+            .nav.mobile-active { display: flex !important; }
+
+            .hero h1 { font-size: 32px; }
+            .main-layout { grid-template-columns: 1fr; margin-top: 20px; }
+
+            .footer { text-align: center !important; }
+            .footer-grid { 
+                grid-template-columns: 1fr !important; 
+                gap: 40px;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+            .footer-info, .footer-links, .footer-contact {
+                align-items: center !important;
+                text-align: center !important;
+            }
+            .footer-info .logo { justify-content: center !important; margin-bottom: 15px; }
+            .contact-item { justify-content: center !important; }
         }
     </style>
 </head>
@@ -327,8 +291,11 @@
     <header class="header">
         <div class="container header-content">
             <a href="index.html" class="logo">
-                <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2F9dfe8fc4-533c-43e4-ad2d-5b735792cafb?alt=media&token=eea5f1ac-f4f6-4f33-927e-18950b2eec09" alt="Logo">
-                <span>Kementerian Transmigrasi</span>
+                <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2Fcd7a5939-52a2-4e5f-b645-f688d7fb39df?alt=media&token=660e6805-7a19-4696-afb4-ccdd3cd1d174" alt="Logo">
+                <div>
+                    <span class="logo-title">Kementerian Transmigrasi</span>
+                    <span class="logo-subtitle">Republik Indonesia</span>
+                </div>
             </a>
 
             <button class="hamburger" id="hamburger-menu">
@@ -350,7 +317,7 @@
             <div class="container">
                 <span class="badge">Program Unggulan Nasional</span>
                 <h1>Transmigrasi Patriot</h1>
-                <p style="color: var(--muted-foreground); max-width: 700px; margin: 0 auto; font-size: 16px;">
+                <p style="color: var(--muted-foreground); max-width: 600px; margin: 0 auto; font-size: 15px;">
                     Membangun kemandirian kawasan melalui skema Knowledge Spillover dan pemberdayaan SDM unggul di wilayah prioritas.
                 </p>
             </div>
@@ -360,36 +327,44 @@
             <div class="card">
                 <h2 class="section-title">
                     <iconify-icon icon="lucide:book-open" style="color: var(--accent)"></iconify-icon>
-                    Latar Belakang Program
+                    Latar Belakang
                 </h2>
-                <p style="margin-bottom: 24px; color: #4b5563;">
-                    Berdasarkan Rencana Strategis (Renstra) 2025-2029, Transmigrasi Patriot hadir sebagai katalisator untuk mengatasi ketimpangan ekonomi dan sosial. Program ini bukan sekadar perpindahan penduduk, melainkan mobilisasi tenaga ahli muda ke daerah untuk mentransfer ilmu pengetahuan secara langsung kepada masyarakat lokal.
+                <p style="margin-bottom: 24px; color: #4b5563; font-size: 15px; line-height: 1.6;">
+                    Berdasarkan Rencana Strategis (Renstra) 2025-2029, Transmigrasi Patriot hadir sebagai katalisator untuk mengatasi ketimpangan ekonomi dan sosial. Program ini bukan sekadar perpindahan penduduk, melainkan mobilisasi tenaga ahli muda ke daerah-daerah yang membutuhkan sentuhan inovasi dan manajemen modern untuk mengelola sumber daya alam secara berkelanjutan.
                 </p>
 
                 <h3 class="section-title">
                     <iconify-icon icon="lucide:check-circle" style="color: var(--accent)"></iconify-icon>
                     Fokus Utama
                 </h3>
-                <ul style="list-style-position: inside; color: #4b5563; line-height: 2.2; margin-bottom: 24px;">
-                    <li><strong>Digitalisasi:</strong> Membangun infrastruktur literasi digital di kawasan transmigrasi.</li>
-                    <li><strong>Agrobisnis:</strong> Modernisasi pertanian dengan teknologi tepat guna.</li>
-                    <li><strong>Pendidikan:</strong> Meningkatkan kualitas pendidikan non-formal bagi warga lokal.</li>
+                <ul style="list-style: none; color: #4b5563; line-height: 2; margin-bottom: 24px; padding: 0;">
+                    <li style="margin-bottom: 10px;"><iconify-icon icon="lucide:check" style="color:var(--accent); margin-right:8px;"></iconify-icon> <strong>Digitalisasi:</strong> Membawa ekosistem digital ke pelosok untuk akses pasar yang lebih luas.</li>
+                    <li style="margin-bottom: 10px;"><iconify-icon icon="lucide:check" style="color:var(--accent); margin-right:8px;"></iconify-icon> <strong>Agrobisnis:</strong> Penerapan teknologi pertanian presisi guna meningkatkan hasil panen.</li>
+                    <li style="margin-bottom: 10px;"><iconify-icon icon="lucide:check" style="color:var(--accent); margin-right:8px;"></iconify-icon> <strong>Pendidikan:</strong> Pengembangan kurikulum pelatihan vokasi yang sesuai dengan kebutuhan industri lokal.</li>
+                    <li><iconify-icon icon="lucide:check" style="color:var(--accent); margin-right:8px;"></iconify-icon> <strong>Kesehatan:</strong> Peningkatan fasilitas dan layanan kesehatan dasar di kawasan transmigrasi.</li>
                 </ul>
+
+                <h3 class="section-title" style="margin-top: 40px;">
+                    <iconify-icon icon="lucide:award" style="color: var(--accent)"></iconify-icon>
+                    Kualifikasi Peserta
+                </h3>
+                <p style="color: #4b5563; font-size: 15px; line-height: 1.6; margin-bottom: 15px;">Para Patriot dipilih melalui seleksi ketat yang mencakup aspek akademis, ketahanan fisik, dan kemampuan adaptasi sosial. Kami mencari individu yang memiliki jiwa pengabdian tinggi dan berani meninggalkan zona nyaman untuk membangun peradaban baru di wilayah perbatasan dan tertinggal.</p>
+                <p style="color: #4b5563; font-size: 15px; line-height: 1.6;">Lulusan sarjana dari berbagai disiplin ilmu seperti Pertanian, Teknik Informatika, Kesehatan Masyarakat, dan Ekonomi sangat dianjurkan untuk mengikuti seleksi tahunan ini.</p>
             </div>
 
             <aside class="sidebar">
                 <div class="sidebar-card">
                     <h4 style="color: var(--accent); margin-bottom: 12px; font-size: 18px;">Daftar Patriot</h4>
-                    <p style="font-size: 16px; opacity: 0.9; margin-bottom: 24px;">
-                        Apakah Anda pemuda berbakat yang siap membangun Indonesia dari pinggiran? Daftar untuk angkatan 2026 sekarang.
+                    <p style="font-size: 14px; opacity: 0.9; margin-bottom: 24px; line-height: 1.5;">
+                        Apakah Anda pemuda berbakat yang siap membangun Indonesia dari pinggiran? Bergabunglah dengan ribuan Patriot lainnya.
                     </p>
                     <a href="formregistrasi.html" class="btn-action">IKUTI PROGRAM</a>
                 </div>
 
                 <div class="card" style="padding: 24px;">
-                    <h4 style="margin-bottom: 16px; font-size: 18px;">Unduh Informasi</h4>
+                    <h4 style="margin-bottom: 16px; font-size: 16px;">Unduh Informasi</h4>
                     <a href="#" class="btn-download-sidebar btn-coming-soon">
-                        <iconify-icon icon="lucide:file-text" style="font-size: 24px;"></iconify-icon>
+                        <iconify-icon icon="lucide:file-text" style="font-size: 24px; color: var(--accent);"></iconify-icon>
                         Panduan Teknis (PDF)
                     </a>
                 </div>
@@ -397,57 +372,67 @@
         </div>
     </main>
 
-    <div id="comingSoonModal">
-        <div class="modal-content">
-            <div class="modal-icon">
-                <iconify-icon icon="lucide:clock"></iconify-icon>
-            </div>
-            <h3 style="font-size: 24px; font-weight: 800; color: #0d3244; margin-bottom: 12px;">Coming Soon!</h3>
-            <p style="color: #6b7280; font-size: 16px; line-height: 1.5;">Dokumen Panduan Teknis (PDF) sedang dalam tahap finalisasi dan akan segera tersedia untuk diunduh secara publik.</p>
-            <button onclick="closeModal()" class="btn-modal-close">Tutup</button>
-        </div>
-    </div>
-
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-info">
-                    <a href="#" class="logo" style="margin-bottom: 10px; display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2Fe4555ffb-ad55-4a94-acb9-eab45e534938?alt=media&token=3a10a3ef-6f3a-40f0-a6bb-d8ac3e6fa465" alt="Logo" style="width: 45px; height: 45px; border-radius: 50%;">
-                        <div>
-                            <span class="logo-title" style="font-size: 18px; font-weight: 700; display: block; text-transform: uppercase;">Kementerian Transmigrasi RI</span>
-                            <span class="logo-subtitle" style="font-size: 13px; opacity: 0.8; display: block;">Republik Indonesia</span>
+                    <div class="logo" style="display:flex; align-items:center; gap:10px; margin-bottom:15px;">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2Fe4555ffb-ad55-4a94-acb9-eab45e534938?alt=media&token=3a10a3ef-6f3a-40f0-a6bb-d8ac3e6fa465" style="width:45px; border-radius:50%;">
+                        <div style="text-align:left;">
+                            <span class="logo-title" style="color:#fff; font-weight:700; display:block; font-size:15px;">KEMENTERIAN TRANSMIGRASI</span>
+                            <span class="logo-subtitle" style="color:rgba(255,255,255,0.6); font-size:11px;">REPUBLIK INDONESIA</span>
                         </div>
-                    </a>
-                    <p style="opacity: 0.8; font-size: 14px;">Berkomitmen penuh untuk memajukan kesejahteraan masyarakat melalui pembangunan kawasan transmigrasi yang berkelanjutan.</p>
+                    </div>
+                    <p style="color:rgba(255,255,255,0.7); font-size:14px; line-height:1.6; max-width:320px;">Berkomitmen penuh untuk memajukan kesejahteraan masyarakat melalui pembangunan kawasan berkelanjutan.</p>
                 </div>
+                
                 <div class="footer-links">
-                    <h4 class="footer-title">Tautan</h4>
-                    <ul>
-                        <li><a href="profil.html">Profil</a></li>
-                        <li><a href="regulasi.html">Regulasi</a></li>
-                        <li><a href="formregistrasi.html">Pendaftaran</a></li>
+                    <h4 class="footer-title">Tautan Cepat</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="profil.html">Profil Program</a></li>
+                        <li><a href="regulasi.html">Dokumen Regulasi</a></li>
+                        <li><a href="kontakkami.html">Hubungi Kami</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-contact">
-                    <h4 class="footer-title">Kontak</h4>
-                    <p style="font-size: 14px; opacity: 0.8;">Jl. TMP. Kalibata No.17, Jakarta</p>
-                    <p style="font-size: 14px; opacity: 0.8;">info@transmigrasi.go.id</p>
+                    <h4 class="footer-title">Kontak Kami</h4>
+                    <div class="contact-item">
+                        <iconify-icon icon="lucide:map-pin" style="color:var(--accent);"></iconify-icon>
+                        <span>Jl. TMP. Kalibata No.17, Jakarta</span>
+                    </div>
+                    <div class="contact-item">
+                        <iconify-icon icon="lucide:mail" style="color:var(--accent);"></iconify-icon>
+                        <span>info@transmigrasi.go.id</span>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2026 Kementerian Transmigrasi Republik Indonesia.</p>
+                <p>© 2026 Kementerian Transmigrasi Republik Indonesia. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
+    <div id="comingSoonModal">
+        <div class="modal-content">
+            <iconify-icon icon="lucide:clock" style="font-size:50px; color:#f97316; margin-bottom:15px;"></iconify-icon>
+            <h3 style="color:#0d3244; margin-bottom:10px; font-weight:800;">Coming Soon!</h3>
+            <p style="color:#6b7280; font-size:14px; line-height:1.5;">Dokumen Panduan Teknis sedang dalam tahap finalisasi dan akan segera tersedia.</p>
+            <button onclick="closeModal()" style="width:100%; background:#0d3244; color:#fff; border:none; padding:12px; border-radius:8px; margin-top:20px; cursor:pointer; font-weight:700;">Tutup</button>
+        </div>
+    </div>
+
     <script>
-        // Hamburger Menu
+        // Hamburger Menu Logic
         const hamburger = document.getElementById('hamburger-menu');
         const nav = document.getElementById('main-nav');
-        hamburger.addEventListener('click', () => nav.classList.toggle('mobile-active'));
+        if(hamburger) {
+            hamburger.addEventListener('click', () => {
+                nav.classList.toggle('mobile-active');
+            });
+        }
 
-        // Logic Modal Coming Soon
+        // Modal Logic
         const modal = document.getElementById('comingSoonModal');
         const comingSoonBtns = document.querySelectorAll('.btn-coming-soon');
 
@@ -458,13 +443,13 @@
             });
         });
 
-        function closeModal() {
-            modal.style.display = 'none';
-        }
-
-        // Close when clicking outside the content
-        window.onclick = (e) => {
-            if (e.target == modal) closeModal();
+        function closeModal() { if(modal) modal.style.display = 'none'; }
+        
+        // Close modal when clicking outside content
+        window.onclick = (e) => { 
+            if (e.target == modal) {
+                closeModal(); 
+            }
         }
     </script>
 </body>

@@ -201,29 +201,113 @@
             margin: 4px 0; border-radius: 2px; transition: 0.3s;
         }
 
-        /* --- RESPONSIVE MOBILE PERBAIKAN --- */
+        /* --- RESPONSIVE MOBILE FIX TOTAL --- */
         @media (max-width: 768px) {
-            .section-grid { grid-template-columns: 1fr; gap: 20px; text-align: center; }
-            .section-grid img { max-width: 100%; }
-            .profil-list li { text-align: left; }
-            .fokus-grid { grid-template-columns: 1fr; gap: 20px; }
-            .footer-grid { grid-template-columns: 1fr; }
+            /* 1. Global Spacing */
+            .container { padding: 0 20px !important; }
+            .section { padding: 40px 0 !important; }
+
+            /* 2. Header & Logo */
+            .header { height: 70px !important; }
+            .logo-title { font-size: 16px !important; }
+            .logo-subtitle { font-size: 12px !important; }
+            .logo img { width: 40px !important; height: 40px !important; }
+
+            /* 3. Section Grid (Visi Misi) */
+            .section-grid { 
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 30px !important;
+                text-align: center !important; 
+            }
+            .profil-list li { text-align: left !important; }
+
+            /* 4. Fokus Grid */
+            .fokus-grid { 
+                grid-template-columns: 1fr !important; 
+                gap: 15px !important; 
+            }
+
+            /* 5. FIX FOOTER (Yang tadi hancur) */
+            .footer {
+                padding: 40px 0 0 !important;
+                text-align: center !important;
+            }
+
+            .footer-grid {
+                display: flex !important;
+                flex-direction: column !important; /* Paksa jadi satu baris ke bawah */
+                align-items: center !important;
+                gap: 40px !important;
+                padding-bottom: 30px !important;
+            }
+
+            .footer-info {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                width: 100% !important;
+            }
+
+            .footer-info .logo {
+                justify-content: center !important;
+                margin-bottom: 15px !important;
+            }
+
+            .footer-desc {
+                font-size: 14px !important;
+                max-width: 100% !important;
+                line-height: 1.6 !important;
+            }
+
+            .footer-links {
+                width: 100% !important;
+            }
+
+            .footer-links ul {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 10px !important;
+                padding: 0 !important;
+            }
+
+            .footer-contact {
+                width: 100% !important;
+                align-items: center !important;
+            }
+
+            .contact-item {
+                justify-content: center !important; /* Ikon dan teks jadi di tengah */
+                width: 100% !important;
+                font-size: 14px !important;
+            }
+
+            .footer-bottom {
+                padding: 20px 0 !important;
+                font-size: 12px !important;
+            }
         }
 
+        /* Nav Mobile Toggle */
         @media (max-width: 700px) {
-            .header { height: 60px; }
             .nav {
-                display: none; position: absolute; top: 60px; left: 0; width: 100%;
-                flex-direction: column; background: var(--primary); gap: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+                display: none;
+                position: absolute;
+                top: 70px; /* Samain sama tinggi header mobile */
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background: var(--primary);
+                z-index: 100;
             }
-            .nav.mobile-active { display: flex; }
-            .nav-link { padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-            .hamburger { display: flex; }
-            .section { padding: 50px 0; }
-            .section-title { font-size: 32px; }
-            .fokus-card { padding: 32px 20px; }
+            .nav.mobile-active { display: flex !important; }
+            .nav-link { 
+                padding: 15px 24px !important; 
+                border-bottom: 1px solid rgba(255,255,255,0.05); 
+                width: 100%;
+            }
+            .hamburger { display: flex !important; }
         }
-        
     </style>
 
     <style id="global-typography">
@@ -347,46 +431,43 @@
         </section>
     </main>
 
-    <footer class="footer" id="kontak">
+    <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-info">
-                    <a href="#" class="logo" style="margin-bottom: 10px; display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2Fe4555ffb-ad55-4a94-acb9-eab45e534938?alt=media&token=3a10a3ef-6f3a-40f0-a6bb-d8ac3e6fa465" alt="Logo" class="logo-img" style="width: 45px; height: 45px; border-radius: 50%;">
-                        <div>
-                            <span class="logo-title" style="font-size: 20px; font-weight: 700; display: block; text-transform: uppercase;">Kementerian Transmigrasi RI</span>
-                            <span class="logo-subtitle" style="font-size: 14px; opacity: 0.8; display: block;">Republik Indonesia</span>
+                    <div class="logo" style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2Fe4555ffb-ad55-4a94-acb9-eab45e534938?alt=media&token=3a10a3ef-6f3a-40f0-a6bb-d8ac3e6fa465" style="width:50px; border-radius:50%;">
+                        <div style="text-align:left;">
+                            <span style="color:#fff; font-weight:700; display:block; font-size:16px;">KEMENTERIAN TRANSMIGRASI</span>
+                            <span style="color:rgba(255,255,255,0.6); font-size:11px; text-transform: uppercase;">Republik Indonesia</span>
                         </div>
-                    </a>
-                    <p class="footer-desc">Berkomitmen penuh untuk memajukan kesejahteraan masyarakat melalui pembangunan kawasan transmigrasi yang berkelanjutan, inklusif, dan mandiri.</p>
+                    </div>
+                    <p style="color:rgba(255,255,255,0.7); font-size:14px; line-height:1.7; max-width:320px;">Berkomitmen membangun negeri melalui pemerataan kesejahteraan kawasan di seluruh penjuru Indonesia.</p>
                 </div>
+                
                 <div class="footer-links">
                     <h4 class="footer-title">Tautan Cepat</h4>
-                    <ul>
+                    <ul class="footer-links-list">
                         <li><a href="profil.html">Profil Program</a></li>
-                        <li><a href="programdetail.html">Fokus Utama</a></li>
                         <li><a href="regulasi.html">Dokumen Regulasi</a></li>
-                        <li><a href="formregistrasi.html">Pendaftaran Patriot</a></li>
+                        <li><a href="kontakkami.html">Kontak Kami</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-contact">
-                    <h4 class="footer-title">Pusat Kontak</h4>
+                    <h4 class="footer-title">Kontak Kami</h4>
                     <div class="contact-item">
-                        <iconify-icon icon="lucide:map-pin"></iconify-icon>
-                        <span>Jl. TMP. Kalibata No.17, Jakarta Selatan</span>
+                        <iconify-icon icon="lucide:map-pin" style="color:#c08e41; font-size: 18px;"></iconify-icon>
+                        <span>Jl. TMP. Kalibata No.17, Pancoran, Jakarta Selatan 12740</span>
                     </div>
                     <div class="contact-item">
-                        <iconify-icon icon="lucide:phone"></iconify-icon>
-                        <span>(021) 7999999</span>
-                    </div>
-                    <div class="contact-item">
-                        <iconify-icon icon="lucide:mail"></iconify-icon>
+                        <iconify-icon icon="lucide:mail" style="color:#c08e41; font-size: 18px;"></iconify-icon>
                         <span>info@transmigrasi.go.id</span>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2026 Kementerian Transmigrasi Republik Indonesia. Hak Cipta Dilindungi Undang-Undang.</p>
+                <p>© 2026 Kementerian Transmigrasi Republik Indonesia. Seluruh Hak Cipta Dilindungi.</p>
             </div>
         </div>
     </footer>

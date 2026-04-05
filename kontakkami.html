@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
     <style>
@@ -28,19 +28,22 @@
             /* Spacing & Radius */
             --radius-md: 6px;
             --radius-lg: 12px;
-            --container-max: 1200px;
+            --container-max: 1100px;
         }
 
+        /* --- RESET & GLOBAL --- */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        body {
+        html, body { 
+            margin: 0; 
+            padding: 0;
             font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            background-color: var(--background);
+            background-color: #ffffff;
+            scroll-behavior: smooth;
             color: var(--foreground);
             line-height: 1.6;
         }
@@ -49,18 +52,19 @@
             width: 100%;
             max-width: var(--container-max);
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 20px;
         }
 
-        /* --- HEADER & NAVIGATION --- */
+        /* --- HEADER & NAVIGATION (SERAGAM) --- */
         .header {
             background-color: var(--primary);
-            color: var(--primary-foreground);
             height: 80px;
             display: flex;
             align-items: center;
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
@@ -77,61 +81,43 @@
             align-items: center;
             gap: 12px;
             text-decoration: none;
-            color: inherit;
-        }
-
-        .logo img {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: white;
-            padding: 2px;
-        }
-
-        .logo-title {
-            font-size: 20px;
-            font-weight: 700;
-            text-transform: uppercase;
-            display: block;
-        }
-
-        .logo-subtitle {
-            font-size: 14px;
-            opacity: 0.8;
-            display: block;
-        }
-
-        .nav {
-            display: flex;
-            gap: 24px;
-        }
-
-        .nav-link {
             color: white;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
-            opacity: 0.7;
-            transition: 0.3s;
-            padding: 8px 0;
         }
 
-        .nav-link:hover, .nav-link.active {
-            opacity: 1;
-            color: var(--accent);
-            border-bottom: 2px solid var(--accent);
+        .logo img { 
+            height: 40px; 
+            border-radius: 50%; 
+            background: white; 
+            padding: 2px; 
         }
+
+        .logo-title { font-weight: 700; font-size: 14px; display: block; text-transform: uppercase; }
+        .logo-subtitle { font-size: 10px; opacity: 0.7; display: block; }
+
+        .nav { display: flex; gap: 32px; align-items: center; }
+        .nav-link {
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+            font-weight: 500;
+            opacity: 0.8;
+            transition: 0.3s;
+        }
+        .nav-link:hover, .nav-link.active { opacity: 1; color: var(--accent); }
 
         .hamburger {
             display: none;
-            cursor: pointer;
+            background: none;
+            border: none;
             color: white;
-            font-size: 32px;
+            cursor: pointer;
+            font-size: 30px;
         }
 
         /* --- CONTACT SECTION --- */
         .contact-section {
-            padding: 80px 0;
+            padding: 140px 0 80px; /* Padding top untuk fixed header */
+            background: #fff;
         }
 
         .contact-header {
@@ -141,7 +127,7 @@
         }
 
         .contact-title {
-            font-size: 32px;
+            font-size: 42px;
             font-weight: 800;
             color: var(--primary);
             margin-bottom: 16px;
@@ -160,11 +146,15 @@
             background: var(--muted);
             border-radius: var(--radius-lg);
             margin-bottom: 20px;
-            transition: transform 0.3s;
+            transition: 0.3s;
+            border: 1px solid transparent;
         }
 
         .info-item:hover {
             transform: translateY(-5px);
+            border-color: var(--border);
+            background: #fff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
         .info-icon {
@@ -184,6 +174,7 @@
             font-size: 18px;
             color: var(--primary);
             margin-bottom: 6px;
+            font-weight: 700;
         }
 
         .info-content p {
@@ -192,7 +183,7 @@
         }
 
         .map-container {
-            height: 250px;
+            height: 280px;
             border-radius: var(--radius-lg);
             overflow: hidden;
             border: 1px solid var(--border);
@@ -214,11 +205,12 @@
 
         .form-label {
             display: block;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             margin-bottom: 10px;
             text-transform: uppercase;
             color: var(--primary);
+            letter-spacing: 0.5px;
         }
 
         .form-control {
@@ -226,8 +218,8 @@
             padding: 14px;
             background: var(--input);
             border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            font-size: 16px;
+            border-radius: 8px;
+            font-size: 15px;
             font-family: inherit;
             outline: none;
             transition: 0.3s;
@@ -245,7 +237,7 @@
             background: var(--primary);
             color: white;
             border: none;
-            border-radius: var(--radius-md);
+            border-radius: 8px;
             font-weight: 700;
             font-size: 16px;
             cursor: pointer;
@@ -262,76 +254,82 @@
             box-shadow: 0 5px 15px rgba(13, 50, 68, 0.2);
         }
 
-        /* --- UI MODAL COMING SOON --- */
+        /* --- MODAL (SERAGAM) --- */
         #comingSoonModal {
             display: none;
             position: fixed;
             z-index: 9999;
             left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            align-items: center; justify-content: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
             backdrop-filter: blur(4px);
         }
-
         .modal-content {
-            background: white; padding: 40px; border-radius: 20px;
-            max-width: 420px; width: 90%; text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            max-width: 400px;
+            width: 85%;
+            text-align: center;
             animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-
         @keyframes modalPop {
-            from { transform: scale(0.7); opacity: 0; }
+            from { transform: scale(0.8); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
 
-        .modal-icon {
-            width: 80px; height: 80px; background: #fff7ed; color: #f97316;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 24px; font-size: 44px;
-        }
-
-        .btn-modal-close {
-            width: 100%; background: var(--primary); color: #fff; padding: 14px;
-            border: none; border-radius: 10px; font-weight: 700; cursor: pointer;
-            font-size: 16px; margin-top: 24px; transition: 0.2s;
-        }
-
-        /* --- FOOTER --- */
+        /* --- FOOTER (SERAGAM) --- */
         .footer {
-            background: var(--primary);
+            background-color: var(--primary);
             color: white;
-            padding: 80px 0 40px;
+            padding: 70px 0 30px;
+            margin-top: 60px;
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 40px;
+            gap: 50px;
+        }
+
+        .footer-info, .footer-links, .footer-contact {
+            display: flex;
+            flex-direction: column;
         }
 
         .footer-title {
-            color: var(--accent);
-            margin-bottom: 24px;
-            font-size: 18px;
+            color: white;
+            margin-bottom: 25px;
+            font-size: 16px;
             font-weight: 700;
+            position: relative;
         }
 
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 12px; }
-        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 15px; transition: 0.3s; }
-        .footer-links a:hover { color: var(--accent); padding-left: 5px; }
+        .footer-links-list { list-style: none; padding: 0; margin: 0; }
+        .footer-links-list li { margin-bottom: 12px; }
+        .footer-links-list a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; transition: 0.3s; }
+        .footer-links-list a:hover { color: var(--accent); padding-left: 5px; }
+
+        .footer-contact-item {
+            display: flex;
+            gap: 12px;
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            margin-bottom: 18px;
+            line-height: 1.4;
+        }
 
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 30px;
+            padding-top: 25px;
+            margin-top: 40px;
             text-align: center;
-            font-size: 14px;
-            opacity: 0.5;
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
         }
 
-        /* --- RESPONSIVE --- */
+        /* --- MOBILE RESPONSIVE --- */
         @media (max-width: 992px) {
             .contact-grid { grid-template-columns: 1fr; gap: 40px; }
         }
@@ -339,18 +337,35 @@
         @media (max-width: 768px) {
             .hamburger { display: block; }
             .nav {
-                display: none;
-                position: absolute;
-                top: 80px; left: 0; width: 100%;
-                background: var(--primary);
-                flex-direction: column;
-                padding: 20px;
-                gap: 15px;
+                display: none; 
+                position: fixed; 
+                top: 80px; 
+                left: 0; 
+                width: 100%;
+                flex-direction: column; 
+                background: var(--primary); 
+                z-index: 999; 
+                padding: 20px 0;
                 border-top: 1px solid rgba(255,255,255,0.1);
             }
-            .nav.mobile-active { display: flex; }
-            .contact-title { font-size: 28px; }
-            .contact-form-card { padding: 24px; }
+            .nav.mobile-active { display: flex !important; }
+
+            .contact-title { font-size: 32px; }
+            .contact-section { padding-top: 120px; }
+
+            .footer { text-align: center !important; }
+            .footer-grid { 
+                grid-template-columns: 1fr !important; 
+                gap: 40px;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+            .footer-info, .footer-links, .footer-contact {
+                align-items: center !important;
+                text-align: center !important;
+            }
+            .footer-contact-item { justify-content: center !important; }
         }
     </style>
 </head>
@@ -366,9 +381,9 @@
                 </div>
             </a>
 
-            <div class="hamburger" id="hamburger-menu">
+            <button class="hamburger" id="hamburger-menu">
                 <iconify-icon icon="lucide:menu"></iconify-icon>
-            </div>
+            </button>
 
             <nav class="nav" id="main-nav">
                 <a href="index.html" class="nav-link">Home</a>
@@ -416,7 +431,7 @@
                     </div>
 
                     <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.126442654359!2d106.8483!3d-6.2471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTQnNDkuNiJTIDEwNsKwNTAnNTMuOSJF!5e0!3m2!1sid!2sid!4v1625000000000!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.1264245648!2d106.8485292749906!3d-6.247071793741366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3ba6013695b%3A0xe3e69680a65979a!2sKementerian%20Desa%2C%20Pembangunan%20Daerah%20Tertinggal%2C%20dan%20Transmigrasi!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
 
@@ -448,80 +463,77 @@
         </div>
     </main>
 
-    <div id="comingSoonModal">
-        <div class="modal-content">
-            <div class="modal-icon">
-                <iconify-icon icon="lucide:clock"></iconify-icon>
-            </div>
-            <h3 style="font-size: 26px; font-weight: 800; color: #0d3244; margin-bottom: 12px;">Coming Soon!</h3>
-            <p style="color: #6b7280; font-size: 16px; line-height: 1.6;">
-                Fitur pengiriman pesan langsung melalui website sedang dalam tahap sinkronisasi database. Silakan hubungi kami via <strong>Email</strong> atau <strong>Telepon</strong> untuk respon cepat.
-            </p>
-            <button onclick="closeModal()" class="btn-modal-close">Mengerti, Tutup</button>
-        </div>
-    </div>
-
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
-                <div>
-                    <h4 class="footer-title">Kementerian Transmigrasi RI</h4>
-                    <p style="font-size: 15px; opacity: 0.7; line-height: 1.8;">
-                        Berkomitmen penuh untuk memajukan kesejahteraan masyarakat melalui pembangunan kawasan transmigrasi yang berkelanjutan, inklusif, dan mandiri.
-                    </p>
+                <div class="footer-info">
+                    <div class="logo" style="display:flex; align-items:center; gap:10px; margin-bottom:15px;">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2Fe4555ffb-ad55-4a94-acb9-eab45e534938?alt=media&token=3a10a3ef-6f3a-40f0-a6bb-d8ac3e6fa465" style="width:45px; border-radius:50%;">
+                        <div style="text-align:left;">
+                            <span class="logo-title" style="color:#fff; font-weight:700; display:block; font-size:15px;">KEMENTERIAN TRANSMIGRASI</span>
+                            <span class="logo-subtitle" style="color:rgba(255,255,255,0.6); font-size:11px;">REPUBLIK INDONESIA</span>
+                        </div>
+                    </div>
+                    <p style="color:rgba(255,255,255,0.7); font-size:14px; line-height:1.6; max-width:320px;">Berkomitmen penuh untuk memajukan kesejahteraan masyarakat melalui pembangunan kawasan berkelanjutan.</p>
                 </div>
-                <div>
+                
+                <div class="footer-links">
                     <h4 class="footer-title">Tautan Cepat</h4>
-                    <ul class="footer-links">
+                    <ul class="footer-links-list">
                         <li><a href="profil.html">Profil Program</a></li>
-                        <li><a href="programdetail.html">Transmigrasi Patriot</a></li>
                         <li><a href="regulasi.html">Dokumen Regulasi</a></li>
+                        <li><a href="programdetail.html">Transmigrasi Patriot</a></li>
+                        <li><a href="kontakkami.html">Hubungi Kami</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h4 class="footer-title">Pusat Bantuan</h4>
-                    <ul class="footer-links">
-                        <li><a href="kontakkami.html">Hubungi Kami</a></li>
-                        <li><a href="#">FAQ / Tanya Jawab</a></li>
-                        <li><a href="#">Panduan Pendaftaran</a></li>
-                    </ul>
+
+                <div class="footer-contact">
+                    <h4 class="footer-title">Kontak Kami</h4>
+                    <div class="footer-contact-item">
+                        <iconify-icon icon="lucide:map-pin" style="color:var(--accent);"></iconify-icon>
+                        <span>Jl. TMP. Kalibata No.17, Jakarta</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <iconify-icon icon="lucide:mail" style="color:var(--accent);"></iconify-icon>
+                        <span>info@transmigrasi.go.id</span>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2026 Kementerian Transmigrasi Republik Indonesia. Hak Cipta Dilindungi Undang-Undang.</p>
+                <p>© 2026 Kementerian Transmigrasi Republik Indonesia. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
+    <div id="comingSoonModal">
+        <div class="modal-content">
+            <iconify-icon icon="lucide:clock" style="font-size:50px; color:#f97316; margin-bottom:15px;"></iconify-icon>
+            <h3 style="font-size: 24px; font-weight: 800; color: #0d3244; margin-bottom: 12px;">Coming Soon!</h3>
+            <p style="color: #6b7280; font-size: 15px; line-height: 1.6;">
+                Fitur pengiriman pesan langsung sedang dalam tahap sinkronisasi database. Silakan hubungi kami via <strong>Email</strong> untuk respon cepat.
+            </p>
+            <button onclick="closeModal()" style="width:100%; background:var(--primary); color:#fff; border:none; padding:12px; border-radius:8px; margin-top:20px; cursor:pointer; font-weight:700;">Tutup</button>
+        </div>
+    </div>
+
     <script>
-        // 1. Mobile Navigation Toggle
+        // Hamburger logic
         const hamburger = document.getElementById('hamburger-menu');
         const nav = document.getElementById('main-nav');
+        hamburger.addEventListener('click', () => nav.classList.toggle('mobile-active'));
 
-        hamburger.addEventListener('click', () => {
-            nav.classList.toggle('mobile-active');
-        });
-
-        // 2. Logic Modal Coming Soon
+        // Modal logic
         const modal = document.getElementById('comingSoonModal');
         const contactForm = document.getElementById('contactForm');
 
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Mencegah form reload beneran
+            e.preventDefault();
             modal.style.display = 'flex';
-            contactForm.reset(); // Bersihin form setelah submit bohongan
+            contactForm.reset();
         });
 
-        function closeModal() {
-            modal.style.display = 'none';
-        }
-
-        // Tutup modal kalau user klik di area luar kotak putih
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
+        function closeModal() { modal.style.display = 'none'; }
+        window.onclick = function(event) { if (event.target == modal) closeModal(); }
     </script>
 </body>
 </html>
