@@ -1,20 +1,3 @@
-<style>
-    @media (max-width: 900px),
-    (max-width: 768px) {
-        .nav.mobile-active {
-            display: flex !important;
-            flex-direction: column;
-            position: absolute;
-            top: 56px;
-            left: 0;
-            width: 100vw;
-            background: var(--primary);
-            gap: 0;
-            z-index: 100;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-        }
-    }
-</style>
 <!DOCTYPE html>
 <html lang="id">
 
@@ -25,8 +8,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <style>
         :root {
@@ -55,7 +37,6 @@
         body {
             font-family: var(--font-family);
             font-size: 16px;
-
             background-color: var(--background);
             color: var(--foreground);
             line-height: 1.5;
@@ -279,45 +260,6 @@
             transform: scale(0.98);
         }
 
-        /* Content Sections */
-        .content-section {
-            padding: 80px 0;
-        }
-
-        .flex-row {
-            display: flex;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .image-box {
-            flex: 1;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            height: 400px;
-        }
-
-        .text-box {
-            flex: 1;
-        }
-
-        /* Stats */
-        .stats-grid {
-            display: flex;
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .stat-item h3 {
-            font-size: 32px;
-            color: var(--primary);
-        }
-
-        .stat-item p {
-            font-size: 14px;
-            color: var(--muted-foreground);
-        }
-
         /* Footer */
         .footer {
             background: var(--primary);
@@ -360,70 +302,35 @@
             opacity: 0.6;
         }
 
-        /* Responsive */
-        @media (max-width: 900px) {
-            .container {
-                padding: 0 12px;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
+        /* MODAL COMING SOON STYLE */
+        #comingSoonModal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
         }
 
-        @media (max-width: 700px) {
-            .header-content {
-                padding: 0 12px;
-            }
-
-            .header {
-                height: 56px;
-            }
-
-            .logo-title {
-                font-size: 24px;
-            }
-
-            .logo-subtitle {
-                font-size: 14px;
-            }
-
-            .nav {
-                display: none;
-            }
-
-            .nav.mobile-active {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 56px;
-                left: 0;
-                width: 100vw;
-                background: var(--primary);
-                gap: 0;
-                z-index: 100;
-            }
-
-            .nav-link {
-                padding: 16px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                font-size: 16px;
-            }
-
-            .footer {
-                padding: 32px 0 10px 0;
-            }
-
-            .footer-bottom {
-                padding-top: 10px;
-            }
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 6px;
-            }
+        @keyframes modalPop {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
         /* Hamburger menu */
@@ -446,93 +353,51 @@
             transition: 0.3s;
         }
 
-        @media (max-width: 700px) {
-            .hamburger {
-                display: flex;
+        /* Responsive */
+        @media (max-width: 900px) {
+            .container { padding: 0 12px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav { display: none; }
+            .header { height: 64px; }
+            .header-content { height: 64px; }
+            
+            .nav.mobile-active {
+                display: flex !important;
+                flex-direction: column;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                width: 100vw;
+                background: var(--primary);
+                gap: 0;
+                z-index: 100;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
             }
+
+            .nav-link {
+                padding: 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                width: 100%;
+                text-align: center;
+            }
+            .hero h1 { font-size: 32px !important; }
+            .form-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            .form-container { margin-top: -100px; padding: 24px; }
         }
     </style>
 
-    <!-- STANDARDIZASI FONT GLOBAL -->
     <style id="global-typography">
-        body,
-        p,
-        a,
-        span,
-        div,
-        input,
-        button,
-        select,
-        textarea {
+        body, p, a, span, div, input, button, select, textarea {
             font-family: 'Inter', sans-serif !important;
         }
-
-        body {
-            font-size: 16px !important;
-        }
-
-        /* Typography Scale */
-        .logo-title {
-            font-size: 20px !important;
-        }
-
-        .logo-subtitle {
-            font-size: 14px !important;
-        }
-
-        .nav-link {
-            font-size: 16px !important;
-        }
-
-        .hero-title,
-        .hero h1 {
-            font-size: 48px !important;
-        }
-
-        .section-title,
-        .contact-title {
-            font-size: 32px !important;
-        }
-
-        .card-title,
-        .fokus-card h3,
-        .feature-title,
-        .stat-value,
-        .doc-title,
-        .profil-list strong {
-            font-size: 20px !important;
-        }
-
-        .hero-desc,
-        .section-desc,
-        p {
-            font-size: 16px !important;
-        }
-
-        .footer-title,
-        h4 {
-            font-size: 18px !important;
-        }
-
-        .footer-bottom,
-        .footer-links a,
-        .hero-badge {
-            font-size: 14px !important;
-        }
-
-        /* Mobile Scaling */
-        @media (max-width: 768px) {
-
-            .hero-title,
-            .hero h1 {
-                font-size: 32px !important;
-            }
-
-            .section-title,
-            .contact-title {
-                font-size: 24px !important;
-            }
-        }
+        body { font-size: 16px !important; }
+        .logo-title { font-size: 20px !important; }
+        .logo-subtitle { font-size: 14px !important; }
     </style>
 </head>
 
@@ -541,17 +406,14 @@
     <header class="header">
         <div class="container header-content">
             <a href="index.html" class="logo">
-                <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2F0f03f4c4-c2c7-45c6-bcfe-0e1e056b9603?alt=media&amp;token=ff699f1f-0c0e-4bc9-9afe-43a410f70e6a"
-                    alt="Logo" class="logo-img">
+                <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2F0f03f4c4-c2c7-45c6-bcfe-0e1e056b9603?alt=media&amp;token=ff699f1f-0c0e-4bc9-9afe-43a410f70e6a" alt="Logo" class="logo-img">
                 <div class="logo-text">
                     <span class="logo-title">Kementerian Transmigrasi</span>
                     <span class="logo-subtitle">Republik Indonesia</span>
                 </div>
             </a>
-            <div class="hamburger" id="hamburger-menu" aria-label="Buka menu navigasi" tabindex="0">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="hamburger" id="hamburger-menu">
+                <span></span><span></span><span></span>
             </div>
             <nav class="nav" id="main-nav">
                 <a href="index.html" class="nav-link">Home</a>
@@ -564,19 +426,15 @@
     </header>
 
     <main>
-
         <section class="hero">
-            <img src="https://storage.googleapis.com/banani-generated-images/generated-images/43e21db7-3df4-4b86-9eaa-528d276c87ee.jpg"
-                alt="Hero Background" class="hero-img">
+            <img src="https://storage.googleapis.com/banani-generated-images/generated-images/43e21db7-3df4-4b86-9eaa-528d276c87ee.jpg" alt="Hero Background" class="hero-img">
             <div class="hero-overlay"></div>
             <div class="container" style="position: relative; z-index: 2;">
                 <div class="hero-badge">
                     <iconify-icon icon="lucide:pen-tool"></iconify-icon> Pendaftaran Online
                 </div>
-                <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 15px;">Bergabunglah Menjadi Transmigrasi
-                    Patriot</h1>
-                <p style="font-size: 16px; opacity: 0.9; max-width: 600px; margin: 0 auto;">Mari bersama membangun
-                    peradaban dan ekonomi desa melalui aksi nyata di daerah transmigrasi.</p>
+                <h1 style="font-weight: 800; margin-bottom: 15px;">Bergabunglah Menjadi Transmigrasi Patriot</h1>
+                <p style="opacity: 0.9; max-width: 600px; margin: 0 auto;">Mari bersama membangun peradaban dan ekonomi desa melalui aksi nyata di daerah transmigrasi.</p>
             </div>
         </section>
 
@@ -588,11 +446,10 @@
                             <iconify-icon icon="lucide:clipboard-list" style="font-size: 32px;"></iconify-icon>
                         </div>
                         <h2 style="font-size: 32px; color: var(--primary);">Pendaftaran Beasiswa Patriot 2026</h2>
-                        <p style="color: var(--muted-foreground);">Lengkapi formulir di bawah ini untuk bergabung dengan
-                            program ekspedisi.</p>
+                        <p style="color: var(--muted-foreground);">Lengkapi formulir di bawah ini untuk bergabung dengan program ekspedisi.</p>
                     </div>
 
-                    <form>
+                    <form id="pendaftaranForm">
                         <div class="form-grid">
                             <div class="form-group full-width">
                                 <label>Nama Lengkap</label>
@@ -600,7 +457,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Universitas/Instansi</label>
-                                <select class="input-style" name="universitas" required>
+                                <select class="input-style">
                                     <option value="" disabled selected>Pilih Universitas</option>
                                     <option value="Institut Pertanian Bogor (IPB)">Institut Pertanian Bogor (IPB)
                                     </option>
@@ -703,10 +560,8 @@
                             <div class="form-group full-width">
                                 <label>Unggah Proposal Program (PDF, Max 5MB)</label>
                                 <div class="upload-box">
-                                    <iconify-icon icon="lucide:upload-cloud"
-                                        style="font-size: 40px; color: var(--primary); margin-bottom: 10px;"></iconify-icon>
-                                    <p style="font-size: 16px; font-weight: 600;">Klik untuk mengunggah atau seret file
-                                        ke sini</p>
+                                    <iconify-icon icon="lucide:upload-cloud" style="font-size: 40px; color: var(--primary); margin-bottom: 10px;"></iconify-icon>
+                                    <p style="font-size: 16px; font-weight: 600;">Klik untuk mengunggah atau seret file ke sini</p>
                                 </div>
                             </div>
                         </div>
@@ -715,43 +570,44 @@
                 </div>
             </div>
         </section>
-
-
-
-
     </main>
 
-    <footer class="footer" id="kontak">
+    <div id="comingSoonModal">
+        <div class="modal-content">
+            <div style="width: 80px; height: 80px; background: #fff7ed; color: #f97316; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 40px;">
+                <iconify-icon icon="lucide:clock"></iconify-icon>
+            </div>
+            <h3 style="font-size: 24px; font-weight: 800; color: #0d3244; margin-bottom: 12px;">Coming Soon!</h3>
+            <p style="color: #6b7280; font-size: 16px; line-height: 1.5; margin-bottom: 32px;">Fitur pendaftaran online sedang dalam tahap pemeliharaan sistem. Silakan coba beberapa saat lagi atau hubungi admin kami.</p>
+            <button onclick="closeModal()" style="width: 100%; background: #0d3244; color: #fff; padding: 14px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 16px;">Tutup</button>
+        </div>
+    </div>
+
+    <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <a href="#" class="logo"
-                        style="margin-bottom: 10px; display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2F9dfe8fc4-533c-43e4-ad2d-5b735792cafb?alt=media&token=eea5f1ac-f4f6-4f33-927e-18950b2eec09"
-                            alt="Logo" class="logo-img" style="width: 45px; height: 45px; border-radius: 50%;">
-                        <div>
-                            <span class="logo-title"
-                                style="font-size: 20px; font-weight: 700; display: block; text-transform: uppercase;">Kementerian
-                                Transmigrasi RI</span>
-                            <span class="logo-subtitle" style="font-size: 14px; opacity: 0.8; display: block;">Republik
-                                Indonesia</span>
+                    <a href="#" class="logo" style="margin-bottom: 10px;">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2F9dfe8fc4-533c-43e4-ad2d-5b735792cafb?alt=media&token=eea5f1ac-f4f6-4f33-927e-18950b2eec09" alt="Logo" class="logo-img">
+                        <div class="logo-text">
+                            <span class="logo-title" style="text-transform: uppercase;">Kementerian Transmigrasi RI</span>
+                            <span class="logo-subtitle">Republik Indonesia</span>
                         </div>
                     </a>
-                    <p style="font-size: 16px; opacity: 0.7;">Berkomitmen memajukan kesejahteraan melalui pembangunan
-                        kawasan yang mandiri dan berkelanjutan.</p>
+                    <p style="opacity: 0.7;">Berkomitmen memajukan kesejahteraan melalui pembangunan kawasan yang mandiri dan berkelanjutan.</p>
                 </div>
                 <div>
                     <h4 class="footer-title">Tautan</h4>
                     <ul class="footer-links">
-                        <li><a href="#profil">Profil Program</a></li>
-                        <li><a href="#regulasi">Regulasi</a></li>
-                        <li><a href="#">Pendaftaran</a></li>
+                        <li><a href="profil.html">Profil Program</a></li>
+                        <li><a href="regulasi.html">Regulasi</a></li>
+                        <li><a href="formpendaftaran.html">Pendaftaran</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="footer-title">Kontak</h4>
-                    <p style="font-size: 16px; opacity: 0.7; margin-bottom: 10px;">Jl. TMP Kalibata No.17, Jakarta</p>
-                    <p style="font-size: 16px; opacity: 0.7;">info@transmigrasi.go.id</p>
+                    <p style="opacity: 0.7; margin-bottom: 10px;">Jl. TMP Kalibata No.17, Jakarta</p>
+                    <p style="opacity: 0.7;">info@transmigrasi.go.id</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -761,25 +617,27 @@
     </footer>
 
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-</body>
-<script>
-    // Hamburger menu toggle
-    const hamburger = document.getElementById('hamburger-menu');
-    const nav = document.getElementById('main-nav');
-    hamburger.addEventListener('click', function () {
-        nav.classList.toggle('mobile-active');
-    });
-    // Optional: close menu when clicking outside atau pada link (mobile)
-    document.addEventListener('click', function (e) {
-        if (window.innerWidth <= 700) {
-            if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
-                nav.classList.remove('mobile-active');
-            }
-            if (e.target.classList.contains('nav-link')) {
-                nav.classList.remove('mobile-active');
-            }
-        }
-    });
-</script>
+    <script>
+        // Hamburger logic
+        const hamburger = document.getElementById('hamburger-menu');
+        const nav = document.getElementById('main-nav');
+        hamburger.addEventListener('click', () => nav.classList.toggle('mobile-active'));
 
+        // Modal logic Coming Soon
+        const form = document.getElementById('pendaftaranForm');
+        const modal = document.getElementById('comingSoonModal');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Mencegah reload halaman
+            modal.style.display = 'flex'; // Menampilkan popup
+        });
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Click outside modal to close
+        window.onclick = (e) => { if (e.target == modal) closeModal(); }
+    </script>
+</body>
 </html>

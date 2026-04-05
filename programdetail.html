@@ -73,8 +73,8 @@
             z-index: 1001;
         }
 
-        .logo img { height: 40px; }
-        .logo span { font-weight: 700; font-size: 24px; }
+        .logo img { height: 40px; border-radius: 50%; background: white; padding: 2px; }
+        .logo span { font-weight: 700; font-size: 20px; }
 
         .nav {
             display: flex;
@@ -130,6 +130,7 @@
             font-size: 48px;
             color: var(--primary);
             margin-bottom: 15px;
+            font-weight: 800;
         }
 
         /* --- CONTENT SECTION --- */
@@ -168,7 +169,8 @@
             gap: 12px;
             margin-bottom: 20px;
             color: var(--primary);
-            font-size: 32px;
+            font-size: 28px;
+            font-weight: 700;
         }
 
         .btn-action {
@@ -188,19 +190,77 @@
             transform: translateY(-2px);
         }
 
-        /* Tombol Unduh Khusus */
         .btn-download-sidebar {
             display: flex;
             align-items: center;
             gap: 10px;
             color: var(--primary);
             text-decoration: none;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             transition: color 0.3s;
+            cursor: pointer;
         }
         .btn-download-sidebar:hover {
             color: var(--accent);
+        }
+
+        /* --- STYLES MODAL COMING SOON (SERAGAM) --- */
+        #comingSoonModal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes modalPop {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-icon {
+            width: 80px;
+            height: 80px;
+            background: #fff7ed;
+            color: #f97316;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 40px;
+        }
+
+        .btn-modal-close {
+            width: 100%;
+            background: #0d3244;
+            color: #fff;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: 0.2s;
         }
 
         /* --- FOOTER --- */
@@ -239,10 +299,7 @@
 
         /* --- MOBILE RESPONSIVE --- */
         @media (max-width: 992px) {
-            .main-layout {
-                grid-template-columns: 1fr;
-                margin-top: 20px;
-            }
+            .main-layout { grid-template-columns: 1fr; margin-top: 20px; }
         }
 
         @media (max-width: 768px) {
@@ -258,12 +315,9 @@
                 justify-content: center;
                 gap: 40px;
                 transition: 0.5s;
-                box-shadow: 10px 0 30px rgba(0,0,0,0.5);
                 z-index: 1000;
             }
             .nav.mobile-active { left: 0; }
-            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-            .logo span { font-size: 16px; }
             .hero h1 { font-size: 32px !important; }
         }
     </style>
@@ -343,83 +397,75 @@
         </div>
     </main>
 
-    <footer class="footer" id="kontak">
+    <div id="comingSoonModal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <iconify-icon icon="lucide:clock"></iconify-icon>
+            </div>
+            <h3 style="font-size: 24px; font-weight: 800; color: #0d3244; margin-bottom: 12px;">Coming Soon!</h3>
+            <p style="color: #6b7280; font-size: 16px; line-height: 1.5;">Dokumen Panduan Teknis (PDF) sedang dalam tahap finalisasi dan akan segera tersedia untuk diunduh secara publik.</p>
+            <button onclick="closeModal()" class="btn-modal-close">Tutup</button>
+        </div>
+    </div>
+
+    <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-info">
                     <a href="#" class="logo" style="margin-bottom: 10px; display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2Fe4555ffb-ad55-4a94-acb9-eab45e534938?alt=media&token=3a10a3ef-6f3a-40f0-a6bb-d8ac3e6fa465" alt="Logo" class="logo-img" style="width: 45px; height: 45px; border-radius: 50%;">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2Fe4555ffb-ad55-4a94-acb9-eab45e534938?alt=media&token=3a10a3ef-6f3a-40f0-a6bb-d8ac3e6fa465" alt="Logo" style="width: 45px; height: 45px; border-radius: 50%;">
                         <div>
-                            <span class="logo-title" style="font-size: 20px; font-weight: 700; display: block; text-transform: uppercase;">Kementerian Transmigrasi RI</span>
-                            <span class="logo-subtitle" style="font-size: 14px; opacity: 0.8; display: block;">Republik Indonesia</span>
+                            <span class="logo-title" style="font-size: 18px; font-weight: 700; display: block; text-transform: uppercase;">Kementerian Transmigrasi RI</span>
+                            <span class="logo-subtitle" style="font-size: 13px; opacity: 0.8; display: block;">Republik Indonesia</span>
                         </div>
                     </a>
-                    <p class="footer-desc">Berkomitmen penuh untuk memajukan kesejahteraan masyarakat melalui pembangunan kawasan transmigrasi yang berkelanjutan, inklusif, dan mandiri.</p>
+                    <p style="opacity: 0.8; font-size: 14px;">Berkomitmen penuh untuk memajukan kesejahteraan masyarakat melalui pembangunan kawasan transmigrasi yang berkelanjutan.</p>
                 </div>
                 <div class="footer-links">
-                    <h4 class="footer-title">Tautan Cepat</h4>
+                    <h4 class="footer-title">Tautan</h4>
                     <ul>
-                        <li><a href="profil.html">Profil Program</a></li>
-                        <li><a href="programdetail.html">Fokus Utama</a></li>
-                        <li><a href="regulasi.html">Dokumen Regulasi</a></li>
-                        <li><a href="formregistrasi.html">Pendaftaran Patriot</a></li>
+                        <li><a href="profil.html">Profil</a></li>
+                        <li><a href="regulasi.html">Regulasi</a></li>
+                        <li><a href="formregistrasi.html">Pendaftaran</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
-                    <h4 class="footer-title">Pusat Kontak</h4>
-                    <div class="contact-item" style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                        <iconify-icon icon="lucide:map-pin"></iconify-icon>
-                        <span>Jl. TMP. Kalibata No.17, Jakarta Selatan</span>
-                    </div>
-                    <div class="contact-item" style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                        <iconify-icon icon="lucide:phone"></iconify-icon>
-                        <span>(021) 7999999</span>
-                    </div>
-                    <div class="contact-item" style="display: flex; align-items: center; gap: 10px;">
-                        <iconify-icon icon="lucide:mail"></iconify-icon>
-                        <span>info@transmigrasi.go.id</span>
-                    </div>
+                    <h4 class="footer-title">Kontak</h4>
+                    <p style="font-size: 14px; opacity: 0.8;">Jl. TMP. Kalibata No.17, Jakarta</p>
+                    <p style="font-size: 14px; opacity: 0.8;">info@transmigrasi.go.id</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2026 Kementerian Transmigrasi Republik Indonesia. Hak Cipta Dilindungi Undang-Undang.</p>
+                <p>© 2026 Kementerian Transmigrasi Republik Indonesia.</p>
             </div>
         </div>
     </footer>
 
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-
     <script>
-    // Hamburger menu toggle
-    const hamburger = document.getElementById('hamburger-menu');
-    const nav = document.getElementById('main-nav');
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger-menu');
+        const nav = document.getElementById('main-nav');
+        hamburger.addEventListener('click', () => nav.classList.toggle('mobile-active'));
 
-    if (hamburger && nav) {
-        hamburger.addEventListener('click', function() {
-            nav.classList.toggle('mobile-active');
-        });
+        // Logic Modal Coming Soon
+        const modal = document.getElementById('comingSoonModal');
+        const comingSoonBtns = document.querySelectorAll('.btn-coming-soon');
 
-        // Tutup menu saat klik link navigasi (mobile)
-        nav.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 768) {
-                    nav.classList.remove('mobile-active');
-                }
-            });
-        });
-    }
-
-    // POPUP COMING SOON
-    document.addEventListener('DOMContentLoaded', function() {
-        const comingSoonButtons = document.querySelectorAll('.btn-coming-soon');
-        
-        comingSoonButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
+        comingSoonBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                alert("🚀 Coming Soon!\nDokumen Panduan Teknis (PDF) sedang dalam tahap finalisasi dan akan segera tersedia untuk diunduh.");
+                modal.style.display = 'flex';
             });
         });
-    });
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Close when clicking outside the content
+        window.onclick = (e) => {
+            if (e.target == modal) closeModal();
+        }
     </script>
 </body>
 </html>
