@@ -529,66 +529,73 @@ url('assets/img/NEGARA MEMBUTUHKAN ANDA.png');
     }
 
     /* Mobile Scaling - PERBAIKAN HEADER */
-@media (max-width: 768px) {
-  .hero {
-    height: auto !important;
-    min-height: unset !important;
-    padding: 0 !important;
-    background-color: #f4f1de; /* Sesuaikan dengan warna krem background gambar kamu agar jika ada sisa, warnanya nyambung */
-    display: block;
-    position: relative;
-  }
+/* Mobile Scaling - FINAL FIX */
+    @media (max-width: 768px) {
+      .hero {
+        height: auto !important;
+        min-height: unset !important;
+        padding: 0 !important;
+        background-color: #f4f1de; 
+        display: block;
+        position: relative;
+      }
 
-  .hero-bg {
-    position: relative !important;
-    width: 100%;
-    /* Nilai 65% ini adalah angka ajaib supaya gambar landscape kamu tidak gepeng di HP */
-    height: 0;
-    padding-bottom: 65%; 
-    background-image: url('assets/img/NEGARA MEMBUTUHKAN ANDA.png') !important;
-    background-size: contain !important; /* Menjaga proporsi asli gambar agar tidak peang */
-    background-position: center top !important;
-    background-repeat: no-repeat;
-    z-index: 1;
-  }
+      .hero-bg {
+        position: relative !important;
+        width: 100%;
+        height: 0;
+        padding-bottom: 65%; /* Menjaga rasio gambar agar tidak peang */
+        background-image: url('assets/img/NEGARA MEMBUTUHKAN ANDA.png') !important;
+        background-size: contain !important; 
+        background-position: center top !important;
+        background-repeat: no-repeat;
+        z-index: 1;
+      }
 
-  .hero .container {
-    position: absolute !important;
-    top: 55%; /* Geser teks sedikit ke bawah agar tidak menumpuk di atas wajah/tulisan gambar */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    z-index: 2;
-    text-align: center;
-  }
+      /* Container teks dibuat melayang tepat di atas gambar */
+      .hero .container {
+        position: absolute !important;
+        top: 60% !important; /* Turun sedikit agar tidak menumpuk di teks gambar */
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 100% !important;
+        z-index: 2 !important;
+        text-align: center !important;
+        padding: 0 20px !important;
+      }
 
-  .hero-title {
-    font-size: 20px !important;
-    font-weight: 800;
-    color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-    margin-bottom: 5px;
-  }
+      /* PAKSA UKURAN FONT MENGECIL */
+      .hero-title, 
+      .hero h1.hero-title {
+        font-size: 20px !important; /* Ukuran font judul diperkecil */
+        font-weight: 800 !important;
+        color: #ffffff !important;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+        margin-bottom: 4px !important;
+        line-height: 1.1 !important;
+      }
 
-  .hero-desc {
-    font-size: 12px !important;
-    color: #ffffff;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-    line-height: 1.3;
-    max-width: 100% !important;
-  }
+      .hero-desc,
+      .hero p.hero-desc {
+        font-size: 10px !important; /* Ukuran deskripsi diperkecil */
+        color: #ffffff !important;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.8) !important;
+        line-height: 1.2 !important;
+        max-width: 85% !important;
+        margin: 0 auto !important;
+      }
 
-  .scholarship-container {
-    margin-top: -10px !important; /* Tipis saja biar tidak menutupi informasi penting di gambar */
-    position: relative;
-    z-index: 3;
-    padding: 0 10px;
-  }
+      .scholarship-container {
+        margin-top: -15px !important; 
+        position: relative;
+        z-index: 3;
+        padding: 0 15px;
+      }
 
-  .scholarship-box {
-    padding: 20px !important;
-  }
-}
+      .scholarship-box {
+        padding: 20px !important;
+      }
+    }
   </style>
 </head>
 
