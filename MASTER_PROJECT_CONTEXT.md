@@ -29,6 +29,9 @@ Proyek ini merupakan website statis (HTML/CSS/JS) dengan struktur sebagai beriku
 - **Mobile Optimization (Section 'Profil Program')**:
     - Merapatkan section ke atas (mengurangi padding-top) agar flow lebih padat.
     - Merapikan daftar fitur (feature list) agar berada di tengah (centered block) namun teks & ikon tetap rata kiri (left-aligned) dengan alignment yang presisi.
+- **Visual Consistency/Header Unification**:
+    - Menyelaraskan header pada `kontakkami.html` dan `regulasi.html` agar identik dengan `programdetail.html`.
+    - Perubahan meliputi penyesuaian URL logo, penghapusan class `logo-text` dan gaya inline untuk struktur HTML yang seragam, serta sinkronisasi CSS (termasuk penambahan variabel `:root` pada halaman yang belum memilikinya).
 
 ## 5. Deployment / Docker (Optional)
 - Karena merupakan web statis, deployment dapat dilakukan via Nginx atau file server statis lainnya.

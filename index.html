@@ -12,6 +12,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;700&display=swap"
     rel="stylesheet" />
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
   <style>
     :root {
@@ -23,8 +24,7 @@
       --muted: #f3f5f7;
       --muted-foreground: #61717c;
       --accent: #c08e41;
-      --radius-md: 6px;
-      --radius-lg: 8px;
+      --radius: 12px;
       --font-family: 'Inter', sans-serif;
     }
 
@@ -48,43 +48,26 @@
       }
     }
 
-    @media (max-width: 700px) {
-      .header {
-        height: 56px;
-      }
-
-      .header-content {
-        padding: 0 12px;
-      }
-
-      .logo-title {
-        font-size: 24px;
-      }
-
-      .logo-subtitle {
-        font-size: 14px;
-      }
-
+    @media (max-width: 768px) {
+      .hamburger { display: block !important; }
       .nav {
         display: none;
-      }
-
-      .nav.mobile-active {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 56px;
+        position: fixed;
+        top: 80px !important;
         left: 0;
-        width: 100vw;
+        width: 100%;
+        flex-direction: column;
         background: var(--primary);
-        gap: 0;
-        z-index: 100;
+        z-index: 999;
+        align-items: center !important;
+        padding: 20px 0;
       }
-
-      .nav-link {
-        padding: 16px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        font-size: 16px;
+      .nav.mobile-active { display: flex !important; }
+      .nav-link { 
+        padding: 12px 0 !important; 
+        width: 100%; 
+        text-align: center !important; 
+        border-bottom: none !important; 
       }
 
       .section {
@@ -121,27 +104,11 @@
     /* Hamburger menu */
     .hamburger {
       display: none;
-      flex-direction: column;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
+      background: none;
+      border: none;
+      color: white;
       cursor: pointer;
-      z-index: 101;
-    }
-
-    .hamburger span {
-      height: 4px;
-      width: 100%;
-      background: var(--primary-foreground);
-      margin: 4px 0;
-      border-radius: 2px;
-      transition: 0.3s;
-    }
-
-    @media (max-width: 700px) {
-      .hamburger {
-        display: flex;
-      }
+      font-size: 30px;
     }
 
     * {
@@ -156,25 +123,28 @@
       background-color: var(--background);
       color: var(--foreground);
       line-height: 1.5;
+      padding-top: 80px;
     }
 
     .container {
       width: 100%;
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 20px;
     }
 
-    /* Header & Nav */
+    /* --- HEADER & NAVIGATION (FIXED) --- */
     .header {
       background-color: var(--primary);
-      color: var(--primary-foreground);
       height: 80px;
       display: flex;
       align-items: center;
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 50;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
     .header-content {
@@ -187,50 +157,31 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
       text-decoration: none;
-      color: inherit;
+      color: white;
     }
 
-    .logo-img {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
-      border-radius: 50%;
-    }
+    .logo img { height: 40px; border-radius: 50%; background: white; padding: 2px; }
+    .logo-title { font-weight: 700; font-size: 14px !important; display: block; text-transform: none !important; line-height: 1.2; }
+    .logo-subtitle { font-size: 10px !important; opacity: 0.7; display: block; text-transform: none !important; }
 
-    .logo-title {
-      font-size: 24px;
-      font-weight: 700;
-      display: block;
-      text-transform: uppercase;
-    }
-
-    .logo-subtitle {
-      font-size: 14px;
-      opacity: 0.8;
-      display: block;
-    }
-
-    .nav {
-      display: flex;
-      gap: 24px;
-    }
-
+    .nav { display: flex; gap: 32px; align-items: center; }
     .nav-link {
-      color: var(--primary-foreground);
       text-decoration: none;
-      font-size: 16px;
+      color: white;
+      font-size: 15px;
       font-weight: 500;
       opacity: 0.8;
       transition: 0.3s;
     }
-
-    .nav-link:hover,
-    .nav-link.active {
-      opacity: 1;
-      border-bottom: 2px solid var(--accent);
+    .nav-link:hover, .nav-link.active { 
+      opacity: 1 !important; 
+      color: var(--accent) !important; 
+      font-weight: 500 !important;
+      border-bottom: none !important;
     }
+    .nav-link.active::after { display: none !important; }
 
     /* Ticker */
     .ticker {
@@ -446,9 +397,7 @@
 
     body { font-size: 16px !important; }
 
-    .logo-title { font-size: 20px !important; }
-    .logo-subtitle { font-size: 14px !important; }
-    .nav-link { font-size: 16px !important; }
+
     .hero-title, .hero h1 { font-size: 48px !important; }
     .section-title, .contact-title { font-size: 32px !important; }
     .card-title, .fokus-card h3, .feature-title, .stat-value, .doc-title { font-size: 20px !important; }
@@ -771,19 +720,17 @@
   <header class="header">
     <div class="container header-content">
       <a href="index.html" class="logo">
-        <img
-          src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2F9dfe8fc4-533c-43e4-ad2d-5b735792cafb?alt=media&token=eea5f1ac-f4f6-4f33-927e-18950b2eec09"
-          alt="Logo" class="logo-img">
+        <img src="https://firebasestorage.googleapis.com/v0/b/banani-prod.appspot.com/o/reference-images%2Fcd7a5939-52a2-4e5f-b645-f688d7fb39df?alt=media&token=660e6805-7a19-4696-afb4-ccdd3cd1d174" alt="Logo">
         <div>
-          <span class="logo-title">Kementerian Transmigrasi RI</span>
+          <span class="logo-title">Kementerian Transmigrasi</span>
           <span class="logo-subtitle">Republik Indonesia</span>
         </div>
       </a>
-      <div class="hamburger" id="hamburger-menu" aria-label="Buka menu navigasi" tabindex="0">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+
+      <button class="hamburger" id="hamburger-menu">
+        <iconify-icon icon="lucide:menu"></iconify-icon>
+      </button>
+
       <nav class="nav" id="main-nav">
         <a href="index.html" class="nav-link active">Home</a>
         <a href="profil.html" class="nav-link">Profil</a>
